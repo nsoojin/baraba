@@ -1,0 +1,7 @@
+# Baraba document generator jazzy settings
+
+copyright: Copyright 2020 nsoojin
+author: Soojin Ro
+xcodebuild_arguments: [-target, Baraba-iOS]
+clean: true
+output: ./Documentation
