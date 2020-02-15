@@ -57,24 +57,6 @@ github "nsoojin/Baraba"
 
 Run `carthage update` to build the framework and drag the built `Baraba.framework` into your Xcode project. 
 
-On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase” and add the Framework path as mentioned in [Carthage Getting started Step 4, 5 and 6](https://github.com/Carthage/Carthage/blob/master/README.md#if-youre-building-for-ios-tvos-or-watchos)
-
-### Swift Package Manager
-
-To integrate using Apple's [Swift Package Manager](https://swift.org/package-manager/), add the following as a dependency to your `Package.swift`:
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/nsoojin/baraba.git", from: "1.0.0")
-]
-```
-
-Alternatively navigate to your Xcode project, select `Swift Packages` and click the `+` icon to search for `Baraba`.
-
-### Manually
-
-If you prefer not to use any of the aforementioned dependency managers, you can integrate Baraba into your project manually. Simply drag the `Sources` Folder into your Xcode project.
-
 ## Usage
 
 ℹ️ Describe the usage of your Kit
@@ -86,7 +68,7 @@ Contributions are very welcome 🙌
 
 ```
 Baraba
-Copyright (c) 2020 nsoojin sugarpoint33@gmail.com
+Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D9C42A222745900000A6585 /* Baraba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* Baraba.swift */; };
-		3D9C42B1227459C1000A6585 /* Baraba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* Baraba.swift */; };
-		3D9C42BF227459F6000A6585 /* Baraba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* Baraba.swift */; };
-		3D9C42CD22745A28000A6585 /* Baraba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* Baraba.swift */; };
 		3D9C42F62274604A000A6585 /* Baraba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* Baraba.framework */; };
 		3D9C42FC22746078000A6585 /* BarabaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42D722745CDE000A6585 /* BarabaTests.swift */; };
-		3D9C43062274611B000A6585 /* Baraba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C42A92274599D000A6585 /* Baraba.framework */; };
-		3D9C430C22746131000A6585 /* BarabaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42D722745CDE000A6585 /* BarabaTests.swift */; };
-		3D9C431622746198000A6585 /* Baraba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C42C522745A07000A6585 /* Baraba.framework */; };
-		3D9C431C227461AF000A6585 /* BarabaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42D722745CDE000A6585 /* BarabaTests.swift */; };
 		3D9C43242274629B000A6585 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C43232274629B000A6585 /* AppDelegate.swift */; };
 		3D9C43262274629B000A6585 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C43252274629B000A6585 /* ViewController.swift */; };
 		3D9C432B2274629C000A6585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9C432A2274629C000A6585 /* Assets.xcassets */; };
 		3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9C432C2274629C000A6585 /* LaunchScreen.storyboard */; };
 		3D9C433422746323000A6585 /* Baraba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* Baraba.framework */; };
 		3D9C433522746323000A6585 /* Baraba.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* Baraba.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F561738D23F7666D007CE901 /* Baraba.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561738C23F7666D007CE901 /* Baraba.swift */; };
+		F561739023F7667B007CE901 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561738F23F7667B007CE901 /* UIKit+Extensions.swift */; };
+		F561739223F76681007CE901 /* BarabaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739123F76681007CE901 /* BarabaConfiguration.swift */; };
+		F561739823F76691007CE901 /* AVFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739423F76691007CE901 /* AVFaceTracker.swift */; };
+		F561739923F76691007CE901 /* ARFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739523F76691007CE901 /* ARFaceTracker.swift */; };
+		F561739A23F76691007CE901 /* FaceTrackerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739623F76691007CE901 /* FaceTrackerDelegate.swift */; };
+		F561739B23F76691007CE901 /* FaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739723F76691007CE901 /* FaceTracker.swift */; };
+		F561739D23F766B9007CE901 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739C23F766B9007CE901 /* Debouncer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,20 +32,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3D9C428F22745894000A6585;
 			remoteInfo = "Baraba-iOS";
-		};
-		3D9C43072274611B000A6585 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3D9C428722745894000A6585 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3D9C42A82274599D000A6585;
-			remoteInfo = "Baraba-tvOS";
-		};
-		3D9C431722746198000A6585 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3D9C428722745894000A6585 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3D9C42C422745A07000A6585;
-			remoteInfo = "Baraba-macOS";
 		};
 		3D9C433622746323000A6585 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -74,12 +60,7 @@
 		3D9C429022745894000A6585 /* Baraba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Baraba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C429C227458E8000A6585 /* Baraba.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Baraba.plist; sourceTree = "<group>"; };
 		3D9C429D227458E8000A6585 /* BarabaTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BarabaTests.plist; sourceTree = "<group>"; };
-		3D9C42A122745900000A6585 /* Baraba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baraba.swift; sourceTree = "<group>"; };
-		3D9C42A92274599D000A6585 /* Baraba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Baraba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D9C42B7227459D6000A6585 /* Baraba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Baraba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D9C42C522745A07000A6585 /* Baraba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Baraba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C42D222745B48000A6585 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
-		3D9C42D322745B48000A6585 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 		3D9C42D422745B48000A6585 /* Baraba.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Baraba.podspec; sourceTree = SOURCE_ROOT; };
 		3D9C42D522745B48000A6585 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		3D9C42D622745C9D000A6585 /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = SOURCE_ROOT; };
@@ -89,8 +70,6 @@
 		3D9C42DB22745DB0000A6585 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		3D9C42EC22745FDA000A6585 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
 		3D9C42F12274604A000A6585 /* Baraba-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baraba-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D9C43012274611B000A6585 /* Baraba-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baraba-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D9C431122746198000A6585 /* Baraba-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baraba-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C43212274629B000A6585 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C43232274629B000A6585 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9C43252274629B000A6585 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,31 +77,18 @@
 		3D9C432D2274629C000A6585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D9C432F2274629C000A6585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF6F6282315616D00706C4E /* main.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = SOURCE_ROOT; };
+		F561738C23F7666D007CE901 /* Baraba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baraba.swift; sourceTree = "<group>"; };
+		F561738F23F7667B007CE901 /* UIKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
+		F561739123F76681007CE901 /* BarabaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarabaConfiguration.swift; sourceTree = "<group>"; };
+		F561739423F76691007CE901 /* AVFaceTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVFaceTracker.swift; sourceTree = "<group>"; };
+		F561739523F76691007CE901 /* ARFaceTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARFaceTracker.swift; sourceTree = "<group>"; };
+		F561739623F76691007CE901 /* FaceTrackerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceTrackerDelegate.swift; sourceTree = "<group>"; };
+		F561739723F76691007CE901 /* FaceTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceTracker.swift; sourceTree = "<group>"; };
+		F561739C23F766B9007CE901 /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3D9C428D22745894000A6585 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42A62274599D000A6585 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42B4227459D6000A6585 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42C222745A07000A6585 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,22 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C42F62274604A000A6585 /* Baraba.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42FE2274611B000A6585 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D9C43062274611B000A6585 /* Baraba.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C430E22746198000A6585 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D9C431622746198000A6585 /* Baraba.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,12 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				3D9C429022745894000A6585 /* Baraba.framework */,
-				3D9C42A92274599D000A6585 /* Baraba.framework */,
-				3D9C42B7227459D6000A6585 /* Baraba.framework */,
-				3D9C42C522745A07000A6585 /* Baraba.framework */,
 				3D9C42F12274604A000A6585 /* Baraba-iOSTests.xctest */,
-				3D9C43012274611B000A6585 /* Baraba-tvOSTests.xctest */,
-				3D9C431122746198000A6585 /* Baraba-macOSTests.xctest */,
 				3D9C43212274629B000A6585 /* Example.app */,
 			);
 			name = Products;
@@ -196,16 +141,12 @@
 				3D9C429C227458E8000A6585 /* Baraba.plist */,
 				3D9C429D227458E8000A6585 /* BarabaTests.plist */,
 				3D9C42D422745B48000A6585 /* Baraba.podspec */,
-				3D9C42D322745B48000A6585 /* Package.swift */,
 				3D9C42D622745C9D000A6585 /* Fastfile */,
 				3D9C42D222745B48000A6585 /* LICENSE */,
 				3D9C42D522745B48000A6585 /* README.md */,
 				3D9C42DB22745DB0000A6585 /* .gitignore */,
 				3D9C42D822745DAF000A6585 /* .jazzy.yaml */,
 				3D9C42D922745DAF000A6585 /* .swiftlint.yml */,
-				3DB91AC4229AC263002668DA,
-				3DB91AC5229AC26C002668DA,
-				3DB91AC6229AC272002668DA,
 				3DF6F6282315616D00706C4E /* main.yml */,
 			);
 			path = Configs;
@@ -214,7 +155,10 @@
 		3D9C42A0227458FA000A6585 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3D9C42A122745900000A6585 /* Baraba.swift */,
+				F561738C23F7666D007CE901 /* Baraba.swift */,
+				F561739123F76681007CE901 /* BarabaConfiguration.swift */,
+				F561739323F76686007CE901 /* FaceTracker */,
+				F561738E23F76672007CE901 /* Utils */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -248,6 +192,26 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F561738E23F76672007CE901 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F561739C23F766B9007CE901 /* Debouncer.swift */,
+				F561738F23F7667B007CE901 /* UIKit+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F561739323F76686007CE901 /* FaceTracker */ = {
+			isa = PBXGroup;
+			children = (
+				F561739723F76691007CE901 /* FaceTracker.swift */,
+				F561739623F76691007CE901 /* FaceTrackerDelegate.swift */,
+				F561739523F76691007CE901 /* ARFaceTracker.swift */,
+				F561739423F76691007CE901 /* AVFaceTracker.swift */,
+			);
+			path = FaceTracker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -258,33 +222,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3D9C42A42274599D000A6585 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42B2227459D6000A6585 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42C022745A07000A6585 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3D9C428F22745894000A6585 /* Baraba-iOS */ = {
+		3D9C428F22745894000A6585 /* Baraba */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D9C429822745894000A6585 /* Build configuration list for PBXNativeTarget "Baraba-iOS" */;
+			buildConfigurationList = 3D9C429822745894000A6585 /* Build configuration list for PBXNativeTarget "Baraba" */;
 			buildPhases = (
 				3D9C428B22745894000A6585 /* Headers */,
 				3D9C428C22745894000A6585 /* Sources */,
@@ -296,66 +239,9 @@
 			);
 			dependencies = (
 			);
-			name = "Baraba-iOS";
+			name = Baraba;
 			productName = Baraba;
 			productReference = 3D9C429022745894000A6585 /* Baraba.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		3D9C42A82274599D000A6585 /* Baraba-tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3D9C42AE2274599D000A6585 /* Build configuration list for PBXNativeTarget "Baraba-tvOS" */;
-			buildPhases = (
-				3D9C42A42274599D000A6585 /* Headers */,
-				3D9C42A52274599D000A6585 /* Sources */,
-				3D9C42A62274599D000A6585 /* Frameworks */,
-				3D9C42A72274599D000A6585 /* Resources */,
-				3D9C42CF22745AF5000A6585 /* Run SwiftLint */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Baraba-tvOS";
-			productName = "Baraba-tvOS";
-			productReference = 3D9C42A92274599D000A6585 /* Baraba.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		3D9C42B6227459D6000A6585 /* Baraba-watchOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3D9C42BC227459D6000A6585 /* Build configuration list for PBXNativeTarget "Baraba-watchOS" */;
-			buildPhases = (
-				3D9C42B2227459D6000A6585 /* Headers */,
-				3D9C42B3227459D6000A6585 /* Sources */,
-				3D9C42B4227459D6000A6585 /* Frameworks */,
-				3D9C42B5227459D6000A6585 /* Resources */,
-				3D9C42D022745AFE000A6585 /* Run SwiftLint */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Baraba-watchOS";
-			productName = "Baraba-watchOS";
-			productReference = 3D9C42B7227459D6000A6585 /* Baraba.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		3D9C42C422745A07000A6585 /* Baraba-macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3D9C42CA22745A07000A6585 /* Build configuration list for PBXNativeTarget "Baraba-macOS" */;
-			buildPhases = (
-				3D9C42C022745A07000A6585 /* Headers */,
-				3D9C42C122745A07000A6585 /* Sources */,
-				3D9C42C222745A07000A6585 /* Frameworks */,
-				3D9C42C322745A07000A6585 /* Resources */,
-				3D9C42D122745B08000A6585 /* Run SwiftLint */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Baraba-macOS";
-			productName = "Baraba-macOS";
-			productReference = 3D9C42C522745A07000A6585 /* Baraba.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3D9C42F02274604A000A6585 /* Baraba-iOSTests */ = {
@@ -374,42 +260,6 @@
 			name = "Baraba-iOSTests";
 			productName = "Baraba-iOSTests";
 			productReference = 3D9C42F12274604A000A6585 /* Baraba-iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		3D9C43002274611B000A6585 /* Baraba-tvOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3D9C43092274611B000A6585 /* Build configuration list for PBXNativeTarget "Baraba-tvOSTests" */;
-			buildPhases = (
-				3D9C42FD2274611B000A6585 /* Sources */,
-				3D9C42FE2274611B000A6585 /* Frameworks */,
-				3D9C42FF2274611B000A6585 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3D9C43082274611B000A6585 /* PBXTargetDependency */,
-			);
-			name = "Baraba-tvOSTests";
-			productName = "Baraba-tvOSTests";
-			productReference = 3D9C43012274611B000A6585 /* Baraba-tvOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		3D9C431022746198000A6585 /* Baraba-macOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3D9C431922746198000A6585 /* Build configuration list for PBXNativeTarget "Baraba-macOSTests" */;
-			buildPhases = (
-				3D9C430D22746198000A6585 /* Sources */,
-				3D9C430E22746198000A6585 /* Frameworks */,
-				3D9C430F22746198000A6585 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3D9C431822746198000A6585 /* PBXTargetDependency */,
-			);
-			name = "Baraba-macOSTests";
-			productName = "Baraba-macOSTests";
-			productReference = 3D9C431122746198000A6585 /* Baraba-macOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		3D9C43202274629B000A6585 /* Example */ = {
@@ -443,24 +293,9 @@
 				TargetAttributes = {
 					3D9C428F22745894000A6585 = {
 						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1020;
-					};
-					3D9C42A82274599D000A6585 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
-					3D9C42B6227459D6000A6585 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
-					3D9C42C422745A07000A6585 = {
-						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1130;
 					};
 					3D9C42F02274604A000A6585 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
-					3D9C43002274611B000A6585 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
-					3D9C431022746198000A6585 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 					3D9C43202274629B000A6585 = {
@@ -481,13 +316,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3D9C428F22745894000A6585 /* Baraba-iOS */,
-				3D9C42A82274599D000A6585 /* Baraba-tvOS */,
-				3D9C42B6227459D6000A6585 /* Baraba-watchOS */,
-				3D9C42C422745A07000A6585 /* Baraba-macOS */,
+				3D9C428F22745894000A6585 /* Baraba */,
 				3D9C42F02274604A000A6585 /* Baraba-iOSTests */,
-				3D9C43002274611B000A6585 /* Baraba-tvOSTests */,
-				3D9C431022746198000A6585 /* Baraba-macOSTests */,
 				3D9C43202274629B000A6585 /* Example */,
 			);
 		};
@@ -501,42 +331,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3D9C42A72274599D000A6585 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42B5227459D6000A6585 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42C322745A07000A6585 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3D9C42EF2274604A000A6585 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42FF2274611B000A6585 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C430F22746198000A6585 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -573,60 +368,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		3D9C42CF22745AF5000A6585 /* Run SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftLint";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		3D9C42D022745AFE000A6585 /* Run SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftLint";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		3D9C42D122745B08000A6585 /* Run SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftLint";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -634,31 +375,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D9C42A222745900000A6585 /* Baraba.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42A52274599D000A6585 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D9C42B1227459C1000A6585 /* Baraba.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42B3227459D6000A6585 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D9C42BF227459F6000A6585 /* Baraba.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42C122745A07000A6585 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D9C42CD22745A28000A6585 /* Baraba.swift in Sources */,
+				F561739823F76691007CE901 /* AVFaceTracker.swift in Sources */,
+				F561739D23F766B9007CE901 /* Debouncer.swift in Sources */,
+				F561739223F76681007CE901 /* BarabaConfiguration.swift in Sources */,
+				F561739B23F76691007CE901 /* FaceTracker.swift in Sources */,
+				F561739A23F76691007CE901 /* FaceTrackerDelegate.swift in Sources */,
+				F561739923F76691007CE901 /* ARFaceTracker.swift in Sources */,
+				F561739023F7667B007CE901 /* UIKit+Extensions.swift in Sources */,
+				F561738D23F7666D007CE901 /* Baraba.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,22 +391,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C42FC22746078000A6585 /* BarabaTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C42FD2274611B000A6585 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D9C430C22746131000A6585 /* BarabaTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9C430D22746198000A6585 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3D9C431C227461AF000A6585 /* BarabaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,22 +408,12 @@
 /* Begin PBXTargetDependency section */
 		3D9C42F82274604A000A6585 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3D9C428F22745894000A6585 /* Baraba-iOS */;
+			target = 3D9C428F22745894000A6585 /* Baraba */;
 			targetProxy = 3D9C42F72274604A000A6585 /* PBXContainerItemProxy */;
-		};
-		3D9C43082274611B000A6585 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3D9C42A82274599D000A6585 /* Baraba-tvOS */;
-			targetProxy = 3D9C43072274611B000A6585 /* PBXContainerItemProxy */;
-		};
-		3D9C431822746198000A6585 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3D9C42C422745A07000A6585 /* Baraba-macOS */;
-			targetProxy = 3D9C431722746198000A6585 /* PBXContainerItemProxy */;
 		};
 		3D9C433722746323000A6585 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3D9C428F22745894000A6585 /* Baraba-iOS */;
+			target = 3D9C428F22745894000A6585 /* Baraba */;
 			targetProxy = 3D9C433622746323000A6585 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -872,16 +570,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Configs/Baraba.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-iOS";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsoojin.Baraba;
 				PRODUCT_NAME = Baraba;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -902,209 +602,30 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Configs/Baraba.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-iOS";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsoojin.Baraba;
 				PRODUCT_NAME = Baraba;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		3D9C42AF2274599D000A6585 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Configs/Baraba.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-tvOS";
-				PRODUCT_NAME = Baraba;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		3D9C42B02274599D000A6585 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Configs/Baraba.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-tvOS";
-				PRODUCT_NAME = Baraba;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		3D9C42BD227459D6000A6585 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Configs/Baraba.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-watchOS";
-				PRODUCT_NAME = Baraba;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		3D9C42BE227459D6000A6585 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Configs/Baraba.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-watchOS";
-				PRODUCT_NAME = Baraba;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		3D9C42CB22745A07000A6585 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Configs/Baraba.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-macOS";
-				PRODUCT_NAME = Baraba;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		3D9C42CC22745A07000A6585 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Configs/Baraba.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-macOS";
-				PRODUCT_NAME = Baraba;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		3D9C42FA2274604A000A6585 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Configs/BarabaTests.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1120,9 +641,10 @@
 		3D9C42FB2274604A000A6585 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Configs/BarabaTests.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1135,98 +657,21 @@
 			};
 			name = Release;
 		};
-		3D9C430A2274611B000A6585 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Configs/BarabaTests.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-tvOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		3D9C430B2274611B000A6585 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Configs/BarabaTests.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-tvOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		3D9C431A22746198000A6585 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Configs/BarabaTests.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-macOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		3D9C431B22746198000A6585 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Configs/BarabaTests.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-macOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		3D9C43312274629C000A6585 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42S8NWXH6X;
 				INFOPLIST_FILE = Example/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin-iOS.Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1239,15 +684,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42S8NWXH6X;
 				INFOPLIST_FILE = Example/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin-iOS.Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nsoojin.Baraba-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1267,38 +713,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D9C429822745894000A6585 /* Build configuration list for PBXNativeTarget "Baraba-iOS" */ = {
+		3D9C429822745894000A6585 /* Build configuration list for PBXNativeTarget "Baraba" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D9C429922745894000A6585 /* Debug */,
 				3D9C429A22745894000A6585 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3D9C42AE2274599D000A6585 /* Build configuration list for PBXNativeTarget "Baraba-tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D9C42AF2274599D000A6585 /* Debug */,
-				3D9C42B02274599D000A6585 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3D9C42BC227459D6000A6585 /* Build configuration list for PBXNativeTarget "Baraba-watchOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D9C42BD227459D6000A6585 /* Debug */,
-				3D9C42BE227459D6000A6585 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3D9C42CA22745A07000A6585 /* Build configuration list for PBXNativeTarget "Baraba-macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D9C42CB22745A07000A6585 /* Debug */,
-				3D9C42CC22745A07000A6585 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1308,24 +727,6 @@
 			buildConfigurations = (
 				3D9C42FA2274604A000A6585 /* Debug */,
 				3D9C42FB2274604A000A6585 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3D9C43092274611B000A6585 /* Build configuration list for PBXNativeTarget "Baraba-tvOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D9C430A2274611B000A6585 /* Debug */,
-				3D9C430B2274611B000A6585 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3D9C431922746198000A6585 /* Build configuration list for PBXNativeTarget "Baraba-macOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D9C431A22746198000A6585 /* Debug */,
-				3D9C431B22746198000A6585 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

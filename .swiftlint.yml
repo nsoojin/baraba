@@ -6,7 +6,6 @@ opt_in_rules: # some rules are only opt-in
   - conditional_returns_on_newline
   - closure_spacing
   - implicitly_unwrapped_optional
-  - sorted_imports
   - valid_docs
   - nslocalizedstring_require_bundle
 
@@ -19,3 +18,5 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
 
 disabled_rules: # rule identifiers to exclude from running
   - trailing_whitespace
+  - line_length
+  - identifier_name

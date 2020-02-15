@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3D9C42B6227459D6000A6585"
+               BlueprintIdentifier = "3D9C428F22745894000A6585"
                BuildableName = "Baraba.framework"
-               BlueprintName = "Baraba-watchOS"
+               BlueprintName = "Baraba"
                ReferencedContainer = "container:Baraba.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,14 +26,31 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3D9C428F22745894000A6585"
+            BuildableName = "Baraba.framework"
+            BlueprintName = "Baraba"
+            ReferencedContainer = "container:Baraba.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3D9C42F02274604A000A6585"
+               BuildableName = "Baraba-iOSTests.xctest"
+               BlueprintName = "Baraba-iOSTests"
+               ReferencedContainer = "container:Baraba.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
-      <CodeCoverageTargets>
-      </CodeCoverageTargets>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -48,14 +65,12 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3D9C42B6227459D6000A6585"
+            BlueprintIdentifier = "3D9C428F22745894000A6585"
             BuildableName = "Baraba.framework"
-            BlueprintName = "Baraba-watchOS"
+            BlueprintName = "Baraba"
             ReferencedContainer = "container:Baraba.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -66,9 +81,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3D9C42B6227459D6000A6585"
+            BlueprintIdentifier = "3D9C428F22745894000A6585"
             BuildableName = "Baraba.framework"
-            BlueprintName = "Baraba-watchOS"
+            BlueprintName = "Baraba"
             ReferencedContainer = "container:Baraba.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
