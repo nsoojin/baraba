@@ -37,11 +37,16 @@ public class Baraba: NSObject {
         }
     }
     
-    public private(set) var isRunning: Bool = false
+    public weak var delegate: BarabaDelegate?
+    
+    public private(set) var isActive: Bool = false
     
     public var isScrolling: Bool {
-        displayLink.isPaused == false
+        displayLink?.isPaused == false
     }
+    
+    /// The speed in which to auto-scroll the scrollView. Represented in points per second. Default value is `200.0`.
+    public var speed: Double = 200.0
     
     public var pauseDuration: TimeInterval {
         suspendDebouncer.delay
@@ -53,45 +58,43 @@ public class Baraba: NSObject {
             return
         }
         
-        if isRunning {
+        if isActive {
             print("Baraba is already running.")
             return
         }
         
         print("resume baraba")
-        isRunning = true
+        setupDisplayLink()
         tracker.resume()
+        isActive = true
     }
     
     public func pause() {
-        if isRunning {
+        if isActive {
             print("pause baraba")
-            displayLink.isPaused = true
-            isRunning = false
+            isActive = false
             isSuspended = false
             isFacing = false
+            invalidateDisplayLink()
             tracker.pause()
         }
     }
     
     public init(configuration: BarabaConfiguration) {
         tracker = configuration.trackerType.init()
-        suspendDebouncer = Debouncer(delay: configuration.pauseDuration)
+        
+        let debouncerQueue = DispatchQueue(label: "\(Constant.bundleIdentifier).suspendDebouncer.queue",
+                                           qos: .userInitiated,
+                                           autoreleaseFrequency: .workItem)
+        
+        suspendDebouncer = Debouncer(queue: debouncerQueue, delay: configuration.pauseDuration)
         logger = Baraba.makeLogger()
         
         super.init()
         
         tracker.delegate = self
-        
-        displayLink = CADisplayLink(target: self, selector: #selector(scroll))
-        displayLink.add(to: .current, forMode: .default)
-        displayLink.isPaused = true
     }
-    
-    deinit {
-        displayLink.invalidate()
-    }
-    
+
     @objc
     internal func scroll(displayLink: CADisplayLink) {
         logger(displayLink.timestamp)
@@ -100,7 +103,10 @@ public class Baraba: NSObject {
             return
         }
         
-        let target = CGPoint(x: 0, y: scrollView.contentOffset.y + 3)
+        let actualFramesPerSecond = 1 / (displayLink.targetTimestamp - displayLink.timestamp)
+        let scrollOffset = round(speed / actualFramesPerSecond)
+        
+        let target = CGPoint(x: 0, y: scrollView.contentOffset.y + CGFloat(scrollOffset))
         if target.y + scrollView.bounds.height <= scrollView.contentSize.height + scrollView.adjustedContentInset.bottom {
             scrollView.contentOffset = target
         }
@@ -120,9 +126,35 @@ public class Baraba: NSObject {
                 isSuspended = true
             }
             
+//            print("@@@@@@@ schedule")
             suspendDebouncer.schedule {
+                print("----------------- debounced suspend")
                 self.isSuspended = false
             }
+        }
+    }
+    
+    private func setupDisplayLink() {
+        let displayLink = CADisplayLink(target: self, selector: #selector(scroll))
+        displayLink.add(to: .main, forMode: .default)
+        displayLink.isPaused = true
+        
+        self.displayLink = displayLink
+    }
+    
+    private func invalidateDisplayLink() {
+        displayLink?.invalidate()
+    }
+    
+    private func evaluate() {
+        print("evaluate: \(shouldScroll), isPaused: \(displayLink?.isPaused)")
+        precondition(displayLink != nil, "displayLink should not be nil.")
+        if shouldScroll == true && displayLink?.isPaused == true {
+            displayLink?.isPaused = false
+            delegate?.barabaDidStartScrolling(self)
+        } else if shouldScroll == false && displayLink?.isPaused == false {
+            displayLink?.isPaused = true
+            delegate?.barabaDidStopScrolling(self)
         }
     }
     
@@ -133,59 +165,51 @@ public class Baraba: NSObject {
             
             if lastLoggedTime + 1 <= second {
                 lastLoggedTime = second
-                print("scrolling...")
+//                print("scrolling...")
             }
         }
     }
     
+    private weak var displayLink: CADisplayLink?
     private var logger: (CFTimeInterval) -> Void
-    private var displayLink = CADisplayLink()
     private var contentOffsetObservation: NSKeyValueObservation?
     private let suspendDebouncer: Debouncer
     private let tracker: FaceTracker
     
     private var shouldScroll: Bool {
-        return isFacing && isRunning && isSuspended == false
+        return isFacing && isActive && isSuspended == false
     }
     
     private var isFacing: Bool = false {
         didSet {
-            if shouldScroll {
-                displayLink.isPaused = false
-            } else {
-                displayLink.isPaused = true
-            }
+            evaluate()
         }
     }
     
     private var isSuspended: Bool = false {
         didSet {
-            if shouldScroll {
-                displayLink.isPaused = false
-            } else {
-                displayLink.isPaused = true
-            }
+            evaluate()
         }
     }
 }
 
 extension Baraba: FaceTrackerDelegate {
-    func trackerDidStartTrackingFace(_ detector: FaceTracker) {
+    func trackerDidStartTrackingFace(_ tracker: FaceTracker) {
         print("------- facing content")
         isFacing = true
     }
     
-    func trackerDidEndTrackingFace(_ detector: FaceTracker) {
+    func trackerDidEndTrackingFace(_ tracker: FaceTracker) {
         print("------- looking away")
         isFacing = false
     }
     
-    func trackerWasInterrupted(_ detector: FaceTracker) {
+    func trackerWasInterrupted(_ tracker: FaceTracker) {
         print("------- interrupted")
         isSuspended = true
     }
     
-    func trackerInterruptionEnded(_ detector: FaceTracker) {
+    func trackerInterruptionEnded(_ tracker: FaceTracker) {
         print("------- interruption ended")
         isSuspended = false
     }

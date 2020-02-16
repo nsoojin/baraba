@@ -1,5 +1,5 @@
 //
-// Debouncer.swift
+// UIKit+Extensions.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -22,31 +22,16 @@
 // SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-internal class Debouncer {
-    internal let delay: TimeInterval
-    
-    internal func schedule(block: @escaping () -> Void) {
-        queue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            
-            self.workItem.cancel()
-            
-            let newItem = DispatchWorkItem(block: block)
-            self.queue.asyncAfter(deadline: .now() + self.delay, execute: newItem)
-            self.workItem = newItem
-        }
+internal extension CGRect {
+    static var one: CGRect {
+        return CGRect(origin: .zero, size: .one)
     }
-    
-    internal init(queue: DispatchQueue = DispatchQueue.main, delay: TimeInterval) {
-        self.queue = queue
-        self.workItem = DispatchWorkItem(block: {})
-        self.delay = delay
+}
+
+internal extension CGSize {
+    static var one: CGSize {
+        return CGSize(width: 1, height: 1)
     }
-    
-    private let queue: DispatchQueue
-    private var workItem: DispatchWorkItem
 }

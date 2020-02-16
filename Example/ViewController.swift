@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var barabaButton: UIBarButtonItem?
     
-    private let baraba = Baraba(configuration: .default)
+    private let baraba = Baraba(configuration: .automatic)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +22,11 @@ class ViewController: UIViewController {
         barabaButton?.title = "Enable"
         
         baraba.scrollView = tableView
+        baraba.delegate = self
     }
     
     @IBAction func barabaButtonPressed(_ sender: UIBarButtonItem) {
-        if baraba.isRunning {
+        if baraba.isActive {
             sender.title = "Enable"
             baraba.pause()
         } else {
@@ -46,5 +47,19 @@ extension ViewController: UITableViewDataSource {
         cell.textLabel?.text = "hello \(indexPath.row)"
         
         return cell
+    }
+}
+
+extension ViewController: BarabaDelegate {
+    func barabaDidStartScrolling(_ baraba: Baraba) {
+//        print("did start scrolling")
+    }
+    
+    func barabaDidStopScrolling(_ baraba: Baraba) {
+//        print("did stop scrolling")
+    }
+    
+    func baraba(_ baraba: Baraba, didFailWithError error: Error) {
+        print("did fail with error: \(error)")
     }
 }

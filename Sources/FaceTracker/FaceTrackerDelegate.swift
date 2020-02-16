@@ -25,8 +25,8 @@
 import Foundation
 
 internal protocol FaceTrackerDelegate: AnyObject {
-    func trackerDidStartTrackingFace(_ detector: FaceTracker)
-    func trackerDidEndTrackingFace(_ detector: FaceTracker)
-    func trackerWasInterrupted(_ detector: FaceTracker)
-    func trackerInterruptionEnded(_ detector: FaceTracker)
+    func trackerDidStartTrackingFace(_ tracker: FaceTracker)
+    func trackerDidEndTrackingFace(_ tracker: FaceTracker)
+    func trackerWasInterrupted(_ tracker: FaceTracker)
+    func trackerInterruptionEnded(_ tracker: FaceTracker)
 }

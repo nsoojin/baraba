@@ -1,5 +1,5 @@
 //
-// UIKit+Extensions.swift
+// Global.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -22,16 +22,8 @@
 // SOFTWARE.
 //
 
-import UIKit
+import Foundation
 
-extension CGRect {
-    internal static var one: CGRect {
-        return CGRect(origin: .zero, size: .one)
-    }
-}
-
-extension CGSize {
-    internal static var one: CGSize {
-        return CGSize(width: 1, height: 1)
-    }
+internal class Constant {
+    internal static let bundleIdentifier: String = Bundle(for: Constant.self).bundleIdentifier ?? "com.nsoojin.Baraba"
 }

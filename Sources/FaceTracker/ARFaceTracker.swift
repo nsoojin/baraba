@@ -60,7 +60,7 @@ internal class ARFaceTracker: NSObject, FaceTracker {
     private var isTracking: Bool = false
     private let sceneView: ARSCNView
     private let window: UIWindow
-    private let sessionQueue = DispatchQueue(label: "com.nsoojin.baraba.arsession.queue",
+    private let sessionQueue = DispatchQueue(label: "\(Constant.bundleIdentifier).arsession.queue",
                                              qos: .userInteractive,
                                              attributes: [],
                                              autoreleaseFrequency: .workItem)

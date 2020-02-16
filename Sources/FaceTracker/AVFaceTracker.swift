@@ -47,15 +47,15 @@ internal class AVFaceTracker: NSObject, FaceTracker {
                 self.configureSession()
             }
             
-            self.session.startRunning()
             self.observeAVFoundationNotifications()
+            self.session.startRunning()
         }
     }
     
     internal func pause() {
-        removeObservers()
         configurationQueue.async {
             self.session.stopRunning()
+            self.removeObservers()
         }
     }
     
@@ -84,11 +84,9 @@ internal class AVFaceTracker: NSObject, FaceTracker {
         NotificationCenter.default.addObserver(self, selector: #selector(sessionRuntimeError),
                                                name: .AVCaptureSessionRuntimeError, object: session)
         NotificationCenter.default.addObserver(self, selector: #selector(sessionWasInterrupted),
-                                               name: .AVCaptureSessionWasInterrupted,
-                                               object: session)
+                                               name: .AVCaptureSessionWasInterrupted, object: session)
         NotificationCenter.default.addObserver(self, selector: #selector(sessionInterruptionEnded),
-                                               name: .AVCaptureSessionInterruptionEnded,
-                                               object: session)
+                                               name: .AVCaptureSessionInterruptionEnded, object: session)
     }
     
     private func removeObservers() {
@@ -97,11 +95,13 @@ internal class AVFaceTracker: NSObject, FaceTracker {
         NotificationCenter.default.removeObserver(self, name: .AVCaptureSessionInterruptionEnded, object: session)
     }
     
-    @objc internal func sessionWasInterrupted(notification: NSNotification) {
+    @objc internal func sessionRuntimeError(notification: NSNotification) {
+        print(notification)
         delegate?.trackerWasInterrupted(self)
     }
     
-    @objc internal func sessionRuntimeError(notification: NSNotification) {
+    @objc internal func sessionWasInterrupted(notification: NSNotification) {
+        print(notification)
         delegate?.trackerWasInterrupted(self)
     }
     
@@ -121,11 +121,11 @@ internal class AVFaceTracker: NSObject, FaceTracker {
     
     private let session = AVCaptureSession()
     
-    private let configurationQueue = DispatchQueue(label: "com.nsoojin.baraba.avsession.queue",
+    private let configurationQueue = DispatchQueue(label: "\(Constant.bundleIdentifier).avsession.queue",
                                                    attributes: [],
                                                    autoreleaseFrequency: .workItem)
     
-    private let dataOutputQueue = DispatchQueue(label: "com.nsoojin.baraba.metadata.queue",
+    private let dataOutputQueue = DispatchQueue(label: "\(Constant.bundleIdentifier).metadata.queue",
                                                 qos: .userInteractive,
                                                 attributes: [],
                                                 autoreleaseFrequency: .workItem)
@@ -142,15 +142,5 @@ extension AVFaceTracker: AVCaptureMetadataOutputObjectsDelegate {
             isTracking = false
             delegate?.trackerDidEndTrackingFace(self)
         }
-    }
-}
-
-private extension AVCaptureDevice {
-    static var frontCamera: AVCaptureDevice? {
-        AVCaptureDevice.default(.builtInWideAngleCamera, for: .metadataObject, position: .front)
-    }
-    
-    static var isAuthorizedForFaceTracking: Bool {
-        authorizationStatus(for: .video) == .authorized
     }
 }

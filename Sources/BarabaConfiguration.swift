@@ -24,18 +24,22 @@
 
 import Foundation
 
+/**
+A configuration that defines behavior for a Baraba object.
+*/
 public struct BarabaConfiguration {
     public var isSupported: Bool {
         trackerType.isSupported
     }
     
-    public var pauseDuration: TimeInterval
+    public var pauseDuration: TimeInterval = 2.0
+    
+    public var scrollSpeed: Double = 200.0
     
     internal let trackerType: FaceTracker.Type
     
-    private init(trackerType: FaceTracker.Type, pauseDuration: TimeInterval = 2.0) {
+    private init(trackerType: FaceTracker.Type) {
         self.trackerType = trackerType
-        self.pauseDuration = pauseDuration
     }
     
     private init() {
@@ -44,17 +48,29 @@ public struct BarabaConfiguration {
         } else {
             self.trackerType = AVFaceTracker.self
         }
-        
-        pauseDuration = 2.0
     }
 }
 
 extension BarabaConfiguration {
     
-    public static let `default`: BarabaConfiguration = BarabaConfiguration()
+    /**
+     An automatic configuration. Baraba determines which configuration to use based on hardware availability.
     
+     If the device supports `ARFaceTrackingConfiguration`, then `BarabaConfiguration.ar` is used. Otherwise, `BarabaConfiguration.av` is used.
+    */
+    public static let automatic: BarabaConfiguration = BarabaConfiguration()
+    
+    /**
+     A configuration that uses ARKit Face Tracking to detect faces.
+
+     - important:
+        ARKit Face Tracking is available only on iOS devices with a front-facing TrueDepth camera. Use the `BarabaConfiguration.ar.isSupported` property to determine whether this configuration is available on the current device.
+    */
     public static let ar: BarabaConfiguration = BarabaConfiguration(trackerType: ARFaceTracker.self)
     
+    /**
+     A configuration that uses AVFoundation to track faces.
+    */
     public static let av: BarabaConfiguration = BarabaConfiguration(trackerType: AVFaceTracker.self)
     
 }

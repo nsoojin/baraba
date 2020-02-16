@@ -24,8 +24,46 @@
 
 import Foundation
 
+/**
+ A protocol defining methods that Baraba objects call on their delegates to notify events regarding auto-scrolling features and life cycle changes.
+ */
 public protocol BarabaDelegate: AnyObject {
+    
+    /**
+     Tells the delegate that Baraba initiated the auto-scrolling.
+     
+     The Baraba object scrolls the scrollView when it is active and when user is looking at the screen.
+     
+     - Parameters:
+        - baraba: The baraba object that initiated the scrolling.
+     */
     func barabaDidStartScrolling(_ baraba: Baraba)
+    
+    /**
+     Tells the delegate that Baraba stopped the auto-scrolling.
+    
+     The Baraba object stops the scrolling for several reasons. When the user starts interacting with the scrollview (e.g. dragging), or when camera feed is interrupted(e.g. app goes into background). Once it starts scrolling again, `func barabaDidStartScrolling(_:)` method will be called.
+     
+     Although, such events will not trigger this method when Baraba is not auto-scrolling at all. Also, calling `func pause()` on the Baraba will not trigger this method.
+    
+     - Parameters:
+        - baraba: The baraba object that stopped the scrolling.
+    */
     func barabaDidStopScrolling(_ baraba: Baraba)
+    
+    /**
+     Tells the delegate that Baraba has stopped running due to an error.
+    
+     - Parameters:
+        - baraba: The baraba object that failed.
+        - error: An error object describing the failure.
+    */
     func baraba(_ baraba: Baraba, didFailWithError error: Error)
+}
+
+public extension BarabaDelegate {
+    func barabaDidStartScrolling(_ baraba: Baraba) { }
+    func barabaDidStopScrolling(_ baraba: Baraba) { }
+    func barabaDidResume(_ baraba: Baraba) { }
+    func baraba(_ baraba: Baraba, didFailWithError error: Error) { }
 }

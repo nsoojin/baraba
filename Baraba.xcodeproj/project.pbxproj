@@ -15,6 +15,8 @@
 		3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9C432C2274629C000A6585 /* LaunchScreen.storyboard */; };
 		3D9C433422746323000A6585 /* Baraba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* Baraba.framework */; };
 		3D9C433522746323000A6585 /* Baraba.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* Baraba.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F53EB5C223FC81DE00181932 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53EB5C123FC81DE00181932 /* Constant.swift */; };
+		F5520B2A23FD9B7F008D7D99 /* AV+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5520B2923FD9B7F008D7D99 /* AV+Extensions.swift */; };
 		F561738D23F7666D007CE901 /* Baraba.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561738C23F7666D007CE901 /* Baraba.swift */; };
 		F561739023F7667B007CE901 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561738F23F7667B007CE901 /* UIKit+Extensions.swift */; };
 		F561739223F76681007CE901 /* BarabaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739123F76681007CE901 /* BarabaConfiguration.swift */; };
@@ -79,6 +81,8 @@
 		3D9C432D2274629C000A6585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D9C432F2274629C000A6585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF6F6282315616D00706C4E /* main.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = SOURCE_ROOT; };
+		F53EB5C123FC81DE00181932 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		F5520B2923FD9B7F008D7D99 /* AV+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AV+Extensions.swift"; sourceTree = "<group>"; };
 		F561738C23F7666D007CE901 /* Baraba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baraba.swift; sourceTree = "<group>"; };
 		F561738F23F7667B007CE901 /* UIKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
 		F561739123F76681007CE901 /* BarabaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarabaConfiguration.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				F5D882C023F8E29B007790A3 /* BarabaDelegate.swift */,
 				F561739123F76681007CE901 /* BarabaConfiguration.swift */,
 				F561739323F76686007CE901 /* FaceTracker */,
+				F5520B2B23FD9BA2008D7D99 /* Extensions */,
 				F561738E23F76672007CE901 /* Utils */,
 			);
 			path = Sources;
@@ -198,11 +203,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F5520B2B23FD9BA2008D7D99 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F5520B2923FD9B7F008D7D99 /* AV+Extensions.swift */,
+				F561738F23F7667B007CE901 /* UIKit+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F561738E23F76672007CE901 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F53EB5C123FC81DE00181932 /* Constant.swift */,
 				F561739C23F766B9007CE901 /* Debouncer.swift */,
-				F561738F23F7667B007CE901 /* UIKit+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -390,7 +404,9 @@
 				F561739A23F76691007CE901 /* FaceTrackerDelegate.swift in Sources */,
 				F561739923F76691007CE901 /* ARFaceTracker.swift in Sources */,
 				F561739023F7667B007CE901 /* UIKit+Extensions.swift in Sources */,
+				F53EB5C223FC81DE00181932 /* Constant.swift in Sources */,
 				F561738D23F7666D007CE901 /* Baraba.swift in Sources */,
+				F5520B2A23FD9B7F008D7D99 /* AV+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

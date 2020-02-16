@@ -1,5 +1,5 @@
 //
-// Debouncer.swift
+// AV+Extensions.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -22,31 +22,14 @@
 // SOFTWARE.
 //
 
-import Foundation
+import AVFoundation
 
-internal class Debouncer {
-    internal let delay: TimeInterval
-    
-    internal func schedule(block: @escaping () -> Void) {
-        queue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            
-            self.workItem.cancel()
-            
-            let newItem = DispatchWorkItem(block: block)
-            self.queue.asyncAfter(deadline: .now() + self.delay, execute: newItem)
-            self.workItem = newItem
-        }
+internal extension AVCaptureDevice {
+    static var frontCamera: AVCaptureDevice? {
+        AVCaptureDevice.default(.builtInWideAngleCamera, for: .metadataObject, position: .front)
     }
     
-    internal init(queue: DispatchQueue = DispatchQueue.main, delay: TimeInterval) {
-        self.queue = queue
-        self.workItem = DispatchWorkItem(block: {})
-        self.delay = delay
+    static var isAuthorizedForFaceTracking: Bool {
+        authorizationStatus(for: .video) == .authorized
     }
-    
-    private let queue: DispatchQueue
-    private var workItem: DispatchWorkItem
 }
