@@ -35,9 +35,3 @@ extension CGSize {
         return CGSize(width: 1, height: 1)
     }
 }
-
-extension UIScrollView {
-    internal var didEndDecelerating: Bool {
-        return isTracking == false && isDragging == false && isDecelerating == true
-    }
-}

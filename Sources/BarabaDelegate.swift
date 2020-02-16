@@ -1,5 +1,5 @@
 //
-// Debouncer.swift
+// BarabaDelegate.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -24,29 +24,8 @@
 
 import Foundation
 
-internal class Debouncer {
-    internal let delay: TimeInterval
-    
-    internal func schedule(block: @escaping () -> Void) {
-        queue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            
-            self.workItem.cancel()
-            
-            let newItem = DispatchWorkItem(block: block)
-            self.queue.asyncAfter(deadline: .now() + self.delay, execute: newItem)
-            self.workItem = newItem
-        }
-    }
-    
-    internal init(queue: DispatchQueue = DispatchQueue.global(), delay: TimeInterval) {
-        self.queue = queue
-        self.workItem = DispatchWorkItem(block: {})
-        self.delay = delay
-    }
-    
-    private let queue: DispatchQueue
-    private var workItem: DispatchWorkItem
+public protocol BarabaDelegate: AnyObject {
+    func barabaDidStartScrolling(_ baraba: Baraba)
+    func barabaDidStopScrolling(_ baraba: Baraba)
+    func baraba(_ baraba: Baraba, didFailWithError error: Error)
 }

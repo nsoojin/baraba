@@ -23,6 +23,8 @@
 		F561739A23F76691007CE901 /* FaceTrackerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739623F76691007CE901 /* FaceTrackerDelegate.swift */; };
 		F561739B23F76691007CE901 /* FaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739723F76691007CE901 /* FaceTracker.swift */; };
 		F561739D23F766B9007CE901 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739C23F766B9007CE901 /* Debouncer.swift */; };
+		F5D882BF23F8DA19007790A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D882BE23F8DA19007790A3 /* Main.storyboard */; };
+		F5D882C223F8E2C4007790A3 /* BarabaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D882C023F8E29B007790A3 /* BarabaDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		F561739623F76691007CE901 /* FaceTrackerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceTrackerDelegate.swift; sourceTree = "<group>"; };
 		F561739723F76691007CE901 /* FaceTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceTracker.swift; sourceTree = "<group>"; };
 		F561739C23F766B9007CE901 /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		F5D882BE23F8DA19007790A3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F5D882C023F8E29B007790A3 /* BarabaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarabaDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F561738C23F7666D007CE901 /* Baraba.swift */,
+				F5D882C023F8E29B007790A3 /* BarabaDelegate.swift */,
 				F561739123F76681007CE901 /* BarabaConfiguration.swift */,
 				F561739323F76686007CE901 /* FaceTracker */,
 				F561738E23F76672007CE901 /* Utils */,
@@ -186,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				3D9C432A2274629C000A6585 /* Assets.xcassets */,
+				F5D882BE23F8DA19007790A3 /* Main.storyboard */,
 				3D9C432C2274629C000A6585 /* LaunchScreen.storyboard */,
 				3D9C432F2274629C000A6585 /* Info.plist */,
 			);
@@ -342,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5D882BF23F8DA19007790A3 /* Main.storyboard in Resources */,
 				3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */,
 				3D9C432B2274629C000A6585 /* Assets.xcassets in Resources */,
 			);
@@ -377,6 +384,7 @@
 			files = (
 				F561739823F76691007CE901 /* AVFaceTracker.swift in Sources */,
 				F561739D23F766B9007CE901 /* Debouncer.swift in Sources */,
+				F5D882C223F8E2C4007790A3 /* BarabaDelegate.swift in Sources */,
 				F561739223F76681007CE901 /* BarabaConfiguration.swift in Sources */,
 				F561739B23F76691007CE901 /* FaceTracker.swift in Sources */,
 				F561739A23F76691007CE901 /* FaceTrackerDelegate.swift in Sources */,
