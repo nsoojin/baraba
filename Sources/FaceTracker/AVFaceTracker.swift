@@ -35,7 +35,7 @@ internal class AVFaceTracker: NSObject, FaceTracker {
     internal required override init() {
         super.init()
         
-        if AVCaptureDevice.isAuthorizedForFaceTracking {
+        if AVCaptureDevice.isAuthorizedForVideo {
             configurationQueue.async { self.configureSession() }
         }
     }
@@ -43,7 +43,7 @@ internal class AVFaceTracker: NSObject, FaceTracker {
     internal func resume() {
         isTracking = false
         configurationQueue.async {
-            if AVCaptureDevice.isAuthorizedForFaceTracking == false || self.isSessionConfigured == false {
+            if AVCaptureDevice.isAuthorizedForVideo == false || self.isSessionConfigured == false {
                 self.configureSession()
             }
             
@@ -95,17 +95,20 @@ internal class AVFaceTracker: NSObject, FaceTracker {
         NotificationCenter.default.removeObserver(self, name: .AVCaptureSessionInterruptionEnded, object: session)
     }
     
-    @objc internal func sessionRuntimeError(notification: NSNotification) {
+    @objc
+    internal func sessionRuntimeError(notification: NSNotification) {
         print(notification)
         delegate?.trackerWasInterrupted(self)
     }
     
-    @objc internal func sessionWasInterrupted(notification: NSNotification) {
+    @objc
+    internal func sessionWasInterrupted(notification: NSNotification) {
         print(notification)
         delegate?.trackerWasInterrupted(self)
     }
     
-    @objc internal func sessionInterruptionEnded(notification: NSNotification) {
+    @objc
+    internal func sessionInterruptionEnded(notification: NSNotification) {
         delegate?.trackerInterruptionEnded(self)
     }
     

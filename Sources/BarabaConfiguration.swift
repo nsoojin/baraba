@@ -25,16 +25,9 @@
 import Foundation
 
 /**
-A configuration that defines behavior for a Baraba object.
+ A configuration that defines behavior for a Baraba object.
 */
 public struct BarabaConfiguration {
-    public var isSupported: Bool {
-        trackerType.isSupported
-    }
-    
-    public var pauseDuration: TimeInterval = 2.0
-    
-    public var scrollSpeed: Double = 200.0
     
     internal let trackerType: FaceTracker.Type
     
@@ -63,8 +56,10 @@ extension BarabaConfiguration {
     /**
      A configuration that uses ARKit Face Tracking to detect faces.
 
+     ARKit Face Tracking is available only on iOS devices with a front-facing TrueDepth camera. Use the `BarabaConfiguration.ar.isSupported` property to determine whether this configuration is available on the current device.
+     
      - important:
-        ARKit Face Tracking is available only on iOS devices with a front-facing TrueDepth camera. Use the `BarabaConfiguration.ar.isSupported` property to determine whether this configuration is available on the current device.
+        If you use this configuration, your app must include a privacy policy describing to users how you intend to use face tracking and face data. See [link](https://github.com/nsoojin/baraba) for more details.
     */
     public static let ar: BarabaConfiguration = BarabaConfiguration(trackerType: ARFaceTracker.self)
     

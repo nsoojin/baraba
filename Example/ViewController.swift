@@ -52,11 +52,11 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: BarabaDelegate {
     func barabaDidStartScrolling(_ baraba: Baraba) {
-//        print("did start scrolling")
+        print("did start scrolling")
     }
     
     func barabaDidStopScrolling(_ baraba: Baraba) {
-//        print("did stop scrolling")
+        print("did stop scrolling")
     }
     
     func baraba(_ baraba: Baraba, didFailWithError error: Error) {

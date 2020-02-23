@@ -1,5 +1,5 @@
 //
-// AV+Extensions.swift
+// PropertyWrappers.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -22,14 +22,28 @@
 // SOFTWARE.
 //
 
-import AVFoundation
+import Foundation
 
-internal extension AVCaptureDevice {
-    static var frontCamera: AVCaptureDevice? {
-        AVCaptureDevice.default(.builtInWideAngleCamera, for: .metadataObject, position: .front)
+@propertyWrapper
+internal struct Minimum<T: Comparable> {
+    internal let min: T
+    internal var value: T
+    
+    internal var wrappedValue: T {
+        get {
+            value
+        }
+        set {
+            if newValue < min {
+                value = min
+            } else {
+                value = newValue
+            }
+        }
     }
     
-    static var isAuthorizedForVideo: Bool {
-        authorizationStatus(for: .video) == .authorized
+    internal init(wrappedValue: T, min: T) {
+      value = wrappedValue
+      self.min = min
     }
 }
