@@ -10,11 +10,27 @@
 import XCTest
 
 class BarabaTests: XCTestCase {
-    
-    static var allTests = [
-        ("testExample", testExample),
-    ]
-    
-    func testExample() {}
-    
+    func testUnsupportedConfiguration() {
+        let baraba = Baraba(configuration: .unsupported)
+        let delegate = MockBarabaDelegate()
+        let scrollView = UIScrollView()
+        
+        baraba.scrollView = scrollView
+        baraba.delegate = delegate
+        baraba.resume()
+        
+        let error = delegate.error
+        
+        XCTAssertFalse(baraba.isActive)
+        XCTAssertNotNil(error)
+        
+        if let error = error {
+            if case BarabaError.unsupportedConfiguration = error {
+            } else {
+                XCTFail("Expected BarabaError.unsupportedConfiguration, but got \(error)")
+            }
+        } else {
+            XCTFail("error must not be nil.")
+        }
+    }
 }

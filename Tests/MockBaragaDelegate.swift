@@ -1,5 +1,5 @@
 //
-// BarabaError.swift
+// MockBaragaDelegate.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -23,35 +23,22 @@
 //
 
 import Foundation
-import ARKit
+@testable import Baraba
 
-/**
- The type for errors thrown by Baraba methods.
- */
-public enum BarabaError: Error {
-    /**
-     An error code that indicates the app doesn't have user permission to use the camera.
-     
-     When this error occurs, you may prompt the user to give your app permission to use the camera in Settings.
-     */
-    case cameraUnauthorized
+class MockBarabaDelegate: BarabaDelegate {
+    var numberOfScrollStarts: Int = 0
+    var numberOfScrollStops: Int = 0
+    var error: Error?
     
-    /**
-     An error code that indicates the configuration you chose to create Baraba object is not supported on the device.
-     
-     Call `Baraba.isConfigurationSupported(_:)` to ensure it's supported before attempting to create and run it on the Baraba object with `resume()`.
-     */
-    case unsupportedConfiguration
+    func barabaDidStartScrolling(_ baraba: Baraba) {
+        numberOfScrollStarts += 1
+    }
     
-    /**
-     An error code that indicates the camera sensor has failed.
-     
-     Underlying error object is provided by either AVFoundation or ARKit.
-    */
-    case cameraFailed(Error)
+    func barabaDidStopScrolling(_ baraba: Baraba) {
+        numberOfScrollStops += 1
+    }
     
-    /**
-     An error code that indicates an unknown error has occured.
-    */
-    case unknown
+    func baraba(_ baraba: Baraba, didFailWithError error: Error) {
+        self.error = error
+    }
 }

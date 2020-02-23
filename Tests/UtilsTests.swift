@@ -1,5 +1,5 @@
 //
-// BarabaError.swift
+// UtilsTests.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -22,36 +22,50 @@
 // SOFTWARE.
 //
 
-import Foundation
-import ARKit
+import XCTest
+@testable import Baraba
 
-/**
- The type for errors thrown by Baraba methods.
- */
-public enum BarabaError: Error {
-    /**
-     An error code that indicates the app doesn't have user permission to use the camera.
-     
-     When this error occurs, you may prompt the user to give your app permission to use the camera in Settings.
-     */
-    case cameraUnauthorized
+class UtilsTests: XCTestCase {
+
+    func testDebouncer() {
+        let debouncer = Debouncer(delay: 0.3)
+        
+        let expectationCancel = expectation(description: "This job should cancel")
+        expectationCancel.isInverted = true
+        let expectationSuccess = expectation(description: "This job should succeed")
+        
+        debouncer.schedule {
+            expectationCancel.fulfill()
+        }
+        
+        debouncer.schedule {
+            expectationSuccess.fulfill()
+        }
+       
+        waitForExpectations(timeout: 0.5)
+    }
     
-    /**
-     An error code that indicates the configuration you chose to create Baraba object is not supported on the device.
-     
-     Call `Baraba.isConfigurationSupported(_:)` to ensure it's supported before attempting to create and run it on the Baraba object with `resume()`.
-     */
-    case unsupportedConfiguration
+    func testMinimum() {
+        var mock = MockMinimum(50)
+        
+        mock.value = 20
+        XCTAssertTrue(mock.value == 30)
+        
+        mock.value = 70
+        XCTAssertTrue(mock.value == 70)
+        
+        mock.value = -20
+        XCTAssertTrue(mock.value == 30)
+        
+        mock.value = 29
+        XCTAssertTrue(mock.value == 30)
+    }
+}
+
+private struct MockMinimum {
+    @Minimum(min: 30) var value: Int = 0
     
-    /**
-     An error code that indicates the camera sensor has failed.
-     
-     Underlying error object is provided by either AVFoundation or ARKit.
-    */
-    case cameraFailed(Error)
-    
-    /**
-     An error code that indicates an unknown error has occured.
-    */
-    case unknown
+    init(_ initial: Int) {
+        value = initial
+    }
 }

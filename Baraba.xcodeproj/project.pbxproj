@@ -27,6 +27,10 @@
 		F561739D23F766B9007CE901 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739C23F766B9007CE901 /* Debouncer.swift */; };
 		F569D9622402213400775314 /* BarabaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569D9612402213400775314 /* BarabaError.swift */; };
 		F569D96424023BBF00775314 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569D96324023BBF00775314 /* Log.swift */; };
+		F569D9662402473500775314 /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569D9652402473500775314 /* UtilsTests.swift */; };
+		F569D96C2402484E00775314 /* MockFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569D96B2402484E00775314 /* MockFaceTracker.swift */; };
+		F569D96E240249B700775314 /* MockBaragaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569D96D240249B700775314 /* MockBaragaDelegate.swift */; };
+		F569D97024024ACD00775314 /* MockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569D96F24024ACD00775314 /* MockConfiguration.swift */; };
 		F593547524009E43001EB712 /* PropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593547424009E43001EB712 /* PropertyWrappers.swift */; };
 		F5D882BF23F8DA19007790A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D882BE23F8DA19007790A3 /* Main.storyboard */; };
 		F5D882C223F8E2C4007790A3 /* BarabaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D882C023F8E29B007790A3 /* BarabaDelegate.swift */; };
@@ -75,7 +79,6 @@
 		3D9C42D822745DAF000A6585 /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = SOURCE_ROOT; };
 		3D9C42D922745DAF000A6585 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		3D9C42DB22745DB0000A6585 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
-		3D9C42EC22745FDA000A6585 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
 		3D9C42F12274604A000A6585 /* Baraba-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baraba-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C43212274629B000A6585 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C43232274629B000A6585 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +99,10 @@
 		F561739C23F766B9007CE901 /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		F569D9612402213400775314 /* BarabaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarabaError.swift; sourceTree = "<group>"; };
 		F569D96324023BBF00775314 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		F569D9652402473500775314 /* UtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
+		F569D96B2402484E00775314 /* MockFaceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFaceTracker.swift; sourceTree = "<group>"; };
+		F569D96D240249B700775314 /* MockBaragaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBaragaDelegate.swift; sourceTree = "<group>"; };
+		F569D96F24024ACD00775314 /* MockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConfiguration.swift; sourceTree = "<group>"; };
 		F593547424009E43001EB712 /* PropertyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappers.swift; sourceTree = "<group>"; };
 		F5D882BE23F8DA19007790A3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5D882C023F8E29B007790A3 /* BarabaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarabaDelegate.swift; sourceTree = "<group>"; };
@@ -183,8 +190,11 @@
 		3D9C42A32274595F000A6585 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				3D9C42EC22745FDA000A6585 /* LinuxMain.swift */,
 				3D9C42D722745CDE000A6585 /* BarabaTests.swift */,
+				F569D9652402473500775314 /* UtilsTests.swift */,
+				F569D96B2402484E00775314 /* MockFaceTracker.swift */,
+				F569D96D240249B700775314 /* MockBaragaDelegate.swift */,
+				F569D96F24024ACD00775314 /* MockConfiguration.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -426,7 +436,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F569D97024024ACD00775314 /* MockConfiguration.swift in Sources */,
 				3D9C42FC22746078000A6585 /* BarabaTests.swift in Sources */,
+				F569D96C2402484E00775314 /* MockFaceTracker.swift in Sources */,
+				F569D96E240249B700775314 /* MockBaragaDelegate.swift in Sources */,
+				F569D9662402473500775314 /* UtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

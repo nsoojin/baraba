@@ -1,5 +1,5 @@
 //
-// BarabaError.swift
+// MockConfiguration.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -23,35 +23,9 @@
 //
 
 import Foundation
-import ARKit
+@testable import Baraba
 
-/**
- The type for errors thrown by Baraba methods.
- */
-public enum BarabaError: Error {
-    /**
-     An error code that indicates the app doesn't have user permission to use the camera.
-     
-     When this error occurs, you may prompt the user to give your app permission to use the camera in Settings.
-     */
-    case cameraUnauthorized
-    
-    /**
-     An error code that indicates the configuration you chose to create Baraba object is not supported on the device.
-     
-     Call `Baraba.isConfigurationSupported(_:)` to ensure it's supported before attempting to create and run it on the Baraba object with `resume()`.
-     */
-    case unsupportedConfiguration
-    
-    /**
-     An error code that indicates the camera sensor has failed.
-     
-     Underlying error object is provided by either AVFoundation or ARKit.
-    */
-    case cameraFailed(Error)
-    
-    /**
-     An error code that indicates an unknown error has occured.
-    */
-    case unknown
+extension BarabaConfiguration {
+    static let mock: BarabaConfiguration = BarabaConfiguration(trackerType: MockFaceTracker.self)
+    static let unsupported: BarabaConfiguration = BarabaConfiguration(trackerType: UnsupportedMockFaceTracker.self)
 }
