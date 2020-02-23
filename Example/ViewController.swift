@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var barabaButton: UIBarButtonItem?
     
-    private let baraba = Baraba(configuration: .av)
+    private let baraba = Baraba(configuration: .ar)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +52,14 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: BarabaDelegate {
     func barabaDidStartScrolling(_ baraba: Baraba) {
-        print("did start scrolling")
+//        print("did start scrolling")
     }
     
     func barabaDidStopScrolling(_ baraba: Baraba) {
-        print("did stop scrolling")
+//        print("did stop scrolling")
     }
     
     func baraba(_ baraba: Baraba, didFailWithError error: Error) {
-        print("did fail with error \(error)")
+//        print("did fail with error \(error)")
     }
 }

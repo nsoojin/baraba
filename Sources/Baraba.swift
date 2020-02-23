@@ -24,6 +24,7 @@
 
 import UIKit
 import QuartzCore
+import os
 
 /**
  The main object that you use to add auto-scrolling to a scroll view.
@@ -105,27 +106,28 @@ public class Baraba: NSObject {
     */
     public func resume() {
         if isActive {
-            print("Baraba is already running.")
+            Log.info("resume() called on an already running object, which has no effect.")
             return
         }
         
         if scrollView == nil {
-            print("Baraba(\(self)) failed to resume. Its scrollView property is nil. Please designate a scrollView before calling resume()")
-            delegate?.baraba(self, didFailWithError: BarabaError.scrollViewNotProvided)
+            Log.default("Failed to resume. Its scrollView property is nil. Please designate a scrollView before calling resume()")
             return
         }
         
         if type(of: tracker).isSupported == false {
+            Log.default("Failed to resume. Implement BarabaDelegate's 'func baraba(_:, didFailWithError:)' to find out the reason.")
             delegate?.baraba(self, didFailWithError: BarabaError.unsupportedConfiguration)
             return
         }
         
         if isCameraAccessDenied() {
+            Log.default("Failed to resume. Implement BarabaDelegate's 'func baraba(_:, didFailWithError:)' to find out the reason.")
             delegate?.baraba(self, didFailWithError: BarabaError.cameraUnauthorized)
             return
         }
         
-        print("resume baraba")
+        Log.info("Resumed")
         setupDisplayLink()
         tracker.resume()
         isActive = true
@@ -138,7 +140,7 @@ public class Baraba: NSObject {
     */
     public func pause() {
         if isActive {
-            print("pause baraba")
+            Log.info("Paused")
             isActive = false
             isSuspended = false
             isFacing = false
@@ -159,7 +161,6 @@ public class Baraba: NSObject {
     */
     public init(configuration: BarabaConfiguration) {
         tracker = configuration.trackerType.init()
-        logger = Baraba.makeLogger()
         workQueue = DispatchQueue(label: "\(Constant.bundleIdentifier).queue", qos: .userInitiated, autoreleaseFrequency: .workItem)
         suspendDebouncer = Debouncer(delay: 0)
         
@@ -171,8 +172,6 @@ public class Baraba: NSObject {
 
     @objc
     internal func scroll(displayLink: CADisplayLink) {
-        logger(displayLink.timestamp)
-        
         guard let scrollView = scrollView, shouldScroll else {
             return
         }
@@ -234,9 +233,11 @@ public class Baraba: NSObject {
         
         if shouldScroll == true && displayLink.isPaused == true {
             displayLink.isPaused = false
+            Log.debug("Did start scrolling")
             DispatchQueue.main.async { self.delegate?.barabaDidStartScrolling(self) }
         } else if shouldScroll == false && displayLink.isPaused == false {
             displayLink.isPaused = true
+            Log.debug("Did stop scrolling")
             DispatchQueue.main.async { self.delegate?.barabaDidStopScrolling(self) }
         }
     }
@@ -264,7 +265,6 @@ public class Baraba: NSObject {
     private var _pauseDuration: Double = 2.0
     
     private weak var displayLink: CADisplayLink?
-    private var logger: (CFTimeInterval) -> Void
     private var contentOffsetObservation: NSKeyValueObservation?
     private var suspendDebouncer: Debouncer
     private let tracker: FaceTracker
@@ -273,42 +273,25 @@ public class Baraba: NSObject {
 
 extension Baraba: FaceTrackerDelegate {
     internal func trackerDidStartTrackingFace(_ tracker: FaceTracker) {
-        print("------- facing content")
         isFacing = true
     }
     
     internal func trackerDidEndTrackingFace(_ tracker: FaceTracker) {
-        print("------- looking away")
         isFacing = false
     }
     
     internal func trackerWasInterrupted(_ tracker: FaceTracker) {
-        print("------- interrupted")
+        Log.info("Interrupted")
         isSuspended = true
     }
     
     internal func trackerInterruptionEnded(_ tracker: FaceTracker) {
-        print("------- interruption ended")
+        Log.info("Interruption Ended")
         isSuspended = false
     }
     
     internal func tracker(_ tracker: FaceTracker, didFailWithError error: Error) {
-        print("------- \(error)")
         pause()
         delegate?.baraba(self, didFailWithError: BarabaError.cameraFailed(error))
     }
-}
-
-internal extension Baraba {
-    private static func makeLogger() -> (CFTimeInterval) -> Void {
-            var lastLoggedTime = 0
-            return { interval in
-                let second = Int(floor(interval))
-                
-                if lastLoggedTime + 1 <= second {
-                    lastLoggedTime = second
-    //                print("scrolling...")
-                }
-            }
-        }
 }

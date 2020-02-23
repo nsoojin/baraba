@@ -152,7 +152,7 @@ internal class AVFaceTracker: NSObject, FaceTracker {
 }
 
 extension AVFaceTracker: AVCaptureMetadataOutputObjectsDelegate {
-    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         let isFaceDetected = metadataObjects.contains(where: { $0.type == .face })
         
         if isFaceDetected && isTracking == false {

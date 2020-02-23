@@ -1,5 +1,5 @@
 //
-// BarabaError.swift
+// Log.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -22,34 +22,25 @@
 // SOFTWARE.
 //
 
-import Foundation
-import ARKit
+import os
 
-public enum BarabaError: Error {
+internal struct Log {
     
-    /**
-     An error code that indicates the app doesn't have user permission to use the camera.
-     
-     When this error occurs, you may prompt the user to give your app permission to use the camera in Settings.
-     */
-    case cameraUnauthorized
+    internal static func `default`(_ message: StaticString, _ args: CVarArg...) {
+        os_log(message, log: Log.oslog, type: .default, args)
+    }
     
-    /**
-     An error code that indicates the configuration you chose to create Baraba object is not supported on the device.
-     
-     Call `Baraba.isConfigurationSupported(_:)` to ensure it's supported before attempting to create and run it on the Baraba object with `resume()`.
-     */
-    case unsupportedConfiguration
+    internal static func info(_ message: StaticString, _ args: CVarArg...) {
+        os_log(message, log: Log.oslog, type: .info, args)
+    }
     
-    /**
-     An error code that indicates the camera sensor has failed.
-     
-     Underlying error object is provided by either AVFoundation or ARKit.
-    */
-    case cameraFailed(Error)
+    internal static func error(_ message: StaticString, _ args: CVarArg...) {
+        os_log(message, log: Log.oslog, type: .error, args)
+    }
     
-    /**
-     An error code that indicates an unknown error has occured.
-    */
-    case unknown
+    internal static func debug(_ message: StaticString, _ args: CVarArg...) {
+        os_log(message, log: Log.oslog, type: .debug, args)
+    }
+    
+    private static let oslog = OSLog(subsystem: Constant.bundleIdentifier, category: "Baraba")
 }

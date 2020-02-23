@@ -67,7 +67,7 @@ internal class ARFaceTracker: NSObject, FaceTracker {
 }
 
 extension ARFaceTracker: ARSCNViewDelegate {
-    public func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         let faceAnchor = anchor as? ARFaceAnchor
 
         if faceAnchor?.isTracked == true && isTracking == false {
@@ -81,11 +81,11 @@ extension ARFaceTracker: ARSCNViewDelegate {
 }
 
 extension ARFaceTracker: ARSessionDelegate {
-    public func sessionWasInterrupted(_ session: ARSession) {
+    func sessionWasInterrupted(_ session: ARSession) {
         delegate?.trackerWasInterrupted(self)
     }
     
-    public func sessionInterruptionEnded(_ session: ARSession) {
+    func sessionInterruptionEnded(_ session: ARSession) {
         delegate?.trackerInterruptionEnded(self)
     }
     
