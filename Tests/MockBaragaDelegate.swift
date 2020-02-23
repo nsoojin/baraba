@@ -42,3 +42,7 @@ class MockBarabaDelegate: BarabaDelegate {
         self.error = error
     }
 }
+
+class EmptyBarabaDelegate: BarabaDelegate {
+    
+}

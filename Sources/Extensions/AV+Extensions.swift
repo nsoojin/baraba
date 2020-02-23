@@ -32,8 +32,8 @@ internal extension AVCaptureDevice {
     static var isAuthorizedForVideo: Bool {
         authorizationStatus(for: .video) == .authorized
     }
-}
-
-internal func isCameraAccessDenied() -> Bool {
-    AVCaptureDevice.authorizationStatus(for: .video) == .denied
+    
+    static var isDeniedForVideo: Bool {
+        authorizationStatus(for: .video) == .denied
+    }
 }

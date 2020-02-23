@@ -23,13 +23,26 @@
 //
 
 import Foundation
+import AVFoundation
 
 internal protocol FaceTracker: AnyObject {
     static var isSupported: Bool { get }
+    static var isHardwareAuthorized: Bool { get }
+    static var isHardwareDenied: Bool { get }
     
     var delegate: FaceTrackerDelegate? { get set }
     
     init()
     func resume()
     func pause()
+}
+
+internal extension FaceTracker {
+    static var isHardwareAuthorized: Bool {
+        AVCaptureDevice.isAuthorizedForVideo
+    }
+    
+    static var isHardwareDenied: Bool {
+        AVCaptureDevice.isDeniedForVideo
+    }
 }

@@ -18,7 +18,6 @@
 		F53EB5C223FC81DE00181932 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53EB5C123FC81DE00181932 /* Constant.swift */; };
 		F5520B2A23FD9B7F008D7D99 /* AV+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5520B2923FD9B7F008D7D99 /* AV+Extensions.swift */; };
 		F561738D23F7666D007CE901 /* Baraba.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561738C23F7666D007CE901 /* Baraba.swift */; };
-		F561739023F7667B007CE901 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561738F23F7667B007CE901 /* UIKit+Extensions.swift */; };
 		F561739223F76681007CE901 /* BarabaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739123F76681007CE901 /* BarabaConfiguration.swift */; };
 		F561739823F76691007CE901 /* AVFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739423F76691007CE901 /* AVFaceTracker.swift */; };
 		F561739923F76691007CE901 /* ARFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561739523F76691007CE901 /* ARFaceTracker.swift */; };
@@ -90,7 +89,6 @@
 		F53EB5C123FC81DE00181932 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F5520B2923FD9B7F008D7D99 /* AV+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AV+Extensions.swift"; sourceTree = "<group>"; };
 		F561738C23F7666D007CE901 /* Baraba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baraba.swift; sourceTree = "<group>"; };
-		F561738F23F7667B007CE901 /* UIKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
 		F561739123F76681007CE901 /* BarabaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarabaConfiguration.swift; sourceTree = "<group>"; };
 		F561739423F76691007CE901 /* AVFaceTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVFaceTracker.swift; sourceTree = "<group>"; };
 		F561739523F76691007CE901 /* ARFaceTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARFaceTracker.swift; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				F5520B2923FD9B7F008D7D99 /* AV+Extensions.swift */,
-				F561738F23F7667B007CE901 /* UIKit+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -424,7 +421,6 @@
 				F593547524009E43001EB712 /* PropertyWrappers.swift in Sources */,
 				F561739923F76691007CE901 /* ARFaceTracker.swift in Sources */,
 				F569D96424023BBF00775314 /* Log.swift in Sources */,
-				F561739023F7667B007CE901 /* UIKit+Extensions.swift in Sources */,
 				F53EB5C223FC81DE00181932 /* Constant.swift in Sources */,
 				F569D9622402213400775314 /* BarabaError.swift in Sources */,
 				F561738D23F7666D007CE901 /* Baraba.swift in Sources */,

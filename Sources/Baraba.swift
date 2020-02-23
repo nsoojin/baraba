@@ -34,7 +34,7 @@ public class Baraba: NSObject {
      Returns a boolean value indicating whether a given configuration is supported by the device.
     */
     public static func isConfigurationSupported(_ configuration: BarabaConfiguration) -> Bool {
-        return configuration.trackerType.isSupported
+        return type(of: configuration.tracker).isSupported
     }
     
     /**
@@ -110,7 +110,7 @@ public class Baraba: NSObject {
         }
         
         if scrollView == nil {
-            Log.default("Failed to resume. Its scrollView property is nil. Please designate a scrollView before calling resume()")
+            Log.error("Failed to resume. Its scrollView property is nil. Please designate a scrollView before calling resume()")
             return
         }
         
@@ -120,7 +120,7 @@ public class Baraba: NSObject {
             return
         }
         
-        if isCameraAccessDenied() {
+        if type(of: tracker).isHardwareDenied {
             Log.default("Failed to resume. Implement BarabaDelegate's 'func baraba(_:, didFailWithError:)' to find out the reason.")
             delegate?.baraba(self, didFailWithError: BarabaError.cameraUnauthorized)
             return
@@ -128,8 +128,8 @@ public class Baraba: NSObject {
         
         Log.info("Resumed")
         setupDisplayLink()
-        tracker.resume()
         isActive = true
+        tracker.resume()
     }
     
     /**
@@ -159,7 +159,7 @@ public class Baraba: NSObject {
         - configuration: A configuration object that specifies which feature to use to track user's face.
     */
     public init(configuration: BarabaConfiguration) {
-        tracker = configuration.trackerType.init()
+        tracker = configuration.tracker
         workQueue = DispatchQueue(label: "\(Constant.bundleIdentifier).queue", qos: .userInitiated, autoreleaseFrequency: .workItem)
         suspendDebouncer = Debouncer(delay: 0)
         
@@ -169,6 +169,8 @@ public class Baraba: NSObject {
         tracker.delegate = self
     }
 
+    var numberOfScrolls = 0
+    
     @objc
     internal func scroll(displayLink: CADisplayLink) {
         guard let scrollView = scrollView, shouldScroll else {
@@ -176,10 +178,13 @@ public class Baraba: NSObject {
         }
         
         let actualFramesPerSecond = 1 / (displayLink.targetTimestamp - displayLink.timestamp)
-        let scrollOffset = ceil(speed / actualFramesPerSecond)
+        let scrollOffset = round(max((speed / actualFramesPerSecond), 1))
+        print(scrollOffset)
         let target = CGPoint(x: 0, y: scrollView.contentOffset.y + CGFloat(scrollOffset))
         if target.y + scrollView.bounds.height <= scrollView.contentSize.height + scrollView.adjustedContentInset.bottom {
             scrollView.contentOffset = target
+            print("-- \(scrollView.contentOffset.y)")
+            numberOfScrolls += 1
         }
     }
     
@@ -231,10 +236,12 @@ public class Baraba: NSObject {
         }
         
         if shouldScroll == true && displayLink.isPaused == true {
+//            print("3333")
             displayLink.isPaused = false
             Log.debug("Did start scrolling")
             DispatchQueue.main.async { self.delegate?.barabaDidStartScrolling(self) }
         } else if shouldScroll == false && displayLink.isPaused == false {
+//            print("4444")
             displayLink.isPaused = true
             Log.debug("Did stop scrolling")
             DispatchQueue.main.async { self.delegate?.barabaDidStopScrolling(self) }

@@ -13,25 +13,27 @@ class ViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var barabaButton: UIBarButtonItem?
     
-    private let baraba = Baraba(configuration: .ar)
+    private var baraba: Baraba?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView?.dataSource = self
-        barabaButton?.title = "Enable"
+        barabaButton?.title = "Pause"
         
-        baraba.scrollView = tableView
-        baraba.delegate = self
+        baraba = Baraba(configuration: .av)
+        baraba?.scrollView = tableView
+        baraba?.delegate = self
+        baraba?.resume()
     }
     
     @IBAction func barabaButtonPressed(_ sender: UIBarButtonItem) {
-        if baraba.isActive {
+        if baraba?.isActive == true {
             sender.title = "Enable"
-            baraba.pause()
+            baraba?.pause()
         } else {
             sender.title = "Pause"
-            baraba.resume()
+            baraba?.resume()
         }
     }
 }
@@ -60,6 +62,6 @@ extension ViewController: BarabaDelegate {
     }
     
     func baraba(_ baraba: Baraba, didFailWithError error: Error) {
-//        print("did fail with error \(error)")
+        print("did fail with error \(error)")
     }
 }

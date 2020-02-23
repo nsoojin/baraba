@@ -25,17 +25,20 @@
 import Foundation
 @testable import Baraba
 
+typealias MockAction = (FaceTrackerDelegate) -> ()
+
 class MockFaceTracker: FaceTracker {
     var isResumed: Bool = false
-    
-    static var isSupported: Bool {
-        return true
-    }
-    
+    var action: MockAction?
     var delegate: FaceTrackerDelegate?
     
     func resume() {
         isResumed = true
+        workQueue.async { [weak self] in
+            if let delegate = self?.delegate {
+                self?.action?(delegate)
+            }
+        }
     }
     
     func pause() {
@@ -45,12 +48,27 @@ class MockFaceTracker: FaceTracker {
     required init() {}
     
     private let workQueue = DispatchQueue(label: "com.nsoojin.tests.mock-tracker")
+    static var isSupported: Bool = true
+    static var isHardwareAuthorized: Bool = true
+    static var isHardwareDenied: Bool = false
 }
 
 class UnsupportedMockFaceTracker: FaceTracker {
-    static var isSupported: Bool {
-        return false
-    }
+    static var isSupported: Bool = false
+    static var isHardwareAuthorized: Bool = true
+    
+    var delegate: FaceTrackerDelegate?
+    
+    func resume() {}
+    
+    func pause() {}
+    
+    required init() {}
+}
+
+class HardwareDeniedFaceTracker: FaceTracker {
+    static var isSupported: Bool = true
+    static var isHardwareAuthorized: Bool = false
     
     var delegate: FaceTrackerDelegate?
     

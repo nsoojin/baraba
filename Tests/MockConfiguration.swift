@@ -26,6 +26,7 @@ import Foundation
 @testable import Baraba
 
 extension BarabaConfiguration {
-    static let mock: BarabaConfiguration = BarabaConfiguration(trackerType: MockFaceTracker.self)
-    static let unsupported: BarabaConfiguration = BarabaConfiguration(trackerType: UnsupportedMockFaceTracker.self)
+    static let mock: BarabaConfiguration = BarabaConfiguration(tracker: MockFaceTracker())
+    static let unsupported: BarabaConfiguration = BarabaConfiguration(tracker: UnsupportedMockFaceTracker())
+    static let hardwareDenied: BarabaConfiguration = BarabaConfiguration(tracker: HardwareDeniedFaceTracker())
 }

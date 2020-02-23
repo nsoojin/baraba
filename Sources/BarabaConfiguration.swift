@@ -28,17 +28,17 @@ import Foundation
  A configuration that defines behavior for a Baraba object.
 */
 public struct BarabaConfiguration {
-    internal let trackerType: FaceTracker.Type
+    internal let tracker: FaceTracker
     
-    internal init(trackerType: FaceTracker.Type) {
-        self.trackerType = trackerType
+    internal init(tracker: FaceTracker) {
+        self.tracker = tracker
     }
     
     private init() {
         if ARFaceTracker.isSupported {
-            self.trackerType = ARFaceTracker.self
+            self.tracker = ARFaceTracker()
         } else {
-            self.trackerType = AVFaceTracker.self
+            self.tracker = AVFaceTracker()
         }
     }
 }
@@ -59,11 +59,11 @@ extension BarabaConfiguration {
      - important:
         If you use this configuration, your app must include a privacy policy describing to users how you intend to use face tracking and face data. See [link](https://github.com/nsoojin/baraba) for more details.
     */
-    public static let ar: BarabaConfiguration = BarabaConfiguration(trackerType: ARFaceTracker.self)
+    public static let ar: BarabaConfiguration = BarabaConfiguration(tracker: ARFaceTracker())
     
     /**
      A configuration that uses AVFoundation to track faces.
     */
-    public static let av: BarabaConfiguration = BarabaConfiguration(trackerType: AVFaceTracker.self)
+    public static let av: BarabaConfiguration = BarabaConfiguration(tracker: AVFaceTracker())
     
 }
