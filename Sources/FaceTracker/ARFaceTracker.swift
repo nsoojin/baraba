@@ -33,42 +33,34 @@ internal class ARFaceTracker: NSObject, FaceTracker {
     internal weak var delegate: FaceTrackerDelegate?
 
     internal required override init() {
-        sceneView = ARSCNView(frame: .one)
-        sceneView.isHidden = true
-        
-        window = UIWindow(frame: .one)
-        window.windowLevel = .normal - 999
-        window.addSubview(sceneView)
+        session = ARSession()
         
         super.init()
         
-        sceneView.session.delegate = self
-        sceneView.session.delegateQueue = sessionQueue
-        sceneView.delegate = self
+        session.delegate = self
+        session.delegateQueue = sessionQueue
     }
 
     internal func resume() {
         isTracking = false
-        sceneView.session.run(ARFaceTrackingConfiguration(), options: [])
-        
+        session.run(ARFaceTrackingConfiguration(), options: [])
     }
     
     internal func pause() {
-        sceneView.session.pause()
+        session.pause()
     }
     
     private var isTracking: Bool = false
-    private let sceneView: ARSCNView
-    private let window: UIWindow
+    private let session: ARSession
     private let sessionQueue = DispatchQueue(label: "\(Constant.bundleIdentifier).arsession.queue",
                                              qos: .userInteractive,
                                              attributes: [],
                                              autoreleaseFrequency: .workItem)
 }
 
-extension ARFaceTracker: ARSCNViewDelegate {
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        let faceAnchor = anchor as? ARFaceAnchor
+extension ARFaceTracker: ARSessionDelegate {
+    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+        let faceAnchor = anchors.first as? ARFaceAnchor
 
         if faceAnchor?.isTracked == true && isTracking == false {
             isTracking = true
@@ -78,9 +70,7 @@ extension ARFaceTracker: ARSCNViewDelegate {
             delegate?.trackerDidEndTrackingFace(self)
         }
     }
-}
-
-extension ARFaceTracker: ARSessionDelegate {
+    
     func sessionWasInterrupted(_ session: ARSession) {
         delegate?.trackerWasInterrupted(self)
     }
