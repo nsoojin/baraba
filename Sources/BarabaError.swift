@@ -26,7 +26,6 @@ import Foundation
 import ARKit
 
 public enum BarabaError: Error {
-    
     /**
      An error code that indicates the app doesn't have user permission to use the camera.
      

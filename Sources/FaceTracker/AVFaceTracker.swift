@@ -25,7 +25,6 @@
 import AVFoundation
 
 internal class AVFaceTracker: NSObject, FaceTracker {
-    
     internal static var isSupported: Bool {
         return AVCaptureDevice.frontCamera != nil
     }

@@ -28,7 +28,6 @@ import Foundation
  Methods you can implement to be notified of Baraba events and life cycle changes.
  */
 public protocol BarabaDelegate: AnyObject {
-    
     /**
      Tells the delegate that Baraba initiated the auto-scrolling.
      
@@ -62,8 +61,7 @@ public protocol BarabaDelegate: AnyObject {
 }
 
 public extension BarabaDelegate {
-    func barabaDidStartScrolling(_ baraba: Baraba) { }
-    func barabaDidStopScrolling(_ baraba: Baraba) { }
-    func barabaDidResume(_ baraba: Baraba) { }
-    func baraba(_ baraba: Baraba, didFailWithError error: Error) { }
+    func barabaDidStartScrolling(_ baraba: Baraba) {}
+    func barabaDidStopScrolling(_ baraba: Baraba) {}
+    func baraba(_ baraba: Baraba, didFailWithError error: Error) {}
 }

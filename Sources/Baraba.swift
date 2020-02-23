@@ -30,7 +30,6 @@ import os
  The main object that you use to add auto-scrolling to a scroll view.
 */
 public class Baraba: NSObject {
-    
     /**
      Returns a boolean value indicating whether a given configuration is supported by the device.
     */

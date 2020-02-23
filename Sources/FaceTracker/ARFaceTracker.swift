@@ -25,7 +25,6 @@
 import ARKit
 
 internal class ARFaceTracker: NSObject, FaceTracker {
-    
     internal static var isSupported: Bool {
         return ARFaceTrackingConfiguration.isSupported
     }

@@ -25,7 +25,6 @@
 import os
 
 internal struct Log {
-    
     internal static func `default`(_ message: StaticString, _ args: CVarArg...) {
         os_log(message, log: Log.oslog, type: .default, args)
     }

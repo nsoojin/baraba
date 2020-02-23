@@ -28,10 +28,9 @@ import Foundation
  A configuration that defines behavior for a Baraba object.
 */
 public struct BarabaConfiguration {
-    
     internal let trackerType: FaceTracker.Type
     
-    private init(trackerType: FaceTracker.Type) {
+    internal init(trackerType: FaceTracker.Type) {
         self.trackerType = trackerType
     }
     
@@ -45,7 +44,6 @@ public struct BarabaConfiguration {
 }
 
 extension BarabaConfiguration {
-    
     /**
      An automatic configuration. Baraba determines which configuration to use based on hardware availability.
     
