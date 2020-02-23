@@ -88,4 +88,8 @@ extension ARFaceTracker: ARSessionDelegate {
     public func sessionInterruptionEnded(_ session: ARSession) {
         delegate?.trackerInterruptionEnded(self)
     }
+    
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        delegate?.tracker(self, didFailWithError: error)
+    }
 }

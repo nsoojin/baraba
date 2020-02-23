@@ -29,4 +29,5 @@ internal protocol FaceTrackerDelegate: AnyObject {
     func trackerDidEndTrackingFace(_ tracker: FaceTracker)
     func trackerWasInterrupted(_ tracker: FaceTracker)
     func trackerInterruptionEnded(_ tracker: FaceTracker)
+    func tracker(_ tracker: FaceTracker, didFailWithError error: Error)
 }

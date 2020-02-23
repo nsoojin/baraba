@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var barabaButton: UIBarButtonItem?
     
-    private let baraba = Baraba(configuration: .automatic)
+    private let baraba = Baraba(configuration: .av)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,6 @@ extension ViewController: BarabaDelegate {
     }
     
     func baraba(_ baraba: Baraba, didFailWithError error: Error) {
-        print("did fail with error: \(error)")
+        print("did fail with error \(error)")
     }
 }

@@ -42,13 +42,24 @@ internal class AVFaceTracker: NSObject, FaceTracker {
     
     internal func resume() {
         isTracking = false
-        configurationQueue.async {
-            if AVCaptureDevice.isAuthorizedForVideo == false || self.isSessionConfigured == false {
-                self.configureSession()
+        
+        AVCaptureDevice.requestAccess(for: .video) { [weak self] isGranted in
+            guard let self = self else {
+                return
             }
             
-            self.observeAVFoundationNotifications()
-            self.session.startRunning()
+            if isGranted {
+                self.configurationQueue.async {
+                    if self.isSessionConfigured == false {
+                        self.configureSession()
+                    }
+                    
+                    self.observeAVFoundationNotifications()
+                    self.session.startRunning()
+                }
+            } else {
+                self.delegate?.tracker(self, didFailWithError: BarabaError.cameraUnauthorized)
+            }
         }
     }
     
@@ -97,13 +108,19 @@ internal class AVFaceTracker: NSObject, FaceTracker {
     
     @objc
     internal func sessionRuntimeError(notification: NSNotification) {
-        print(notification)
-        delegate?.trackerWasInterrupted(self)
+        guard let error = notification.userInfo?[AVCaptureSessionErrorKey] as? Error else {
+            delegate?.tracker(self, didFailWithError: BarabaError.unknown)
+            return
+        }
+        
+        // .mediaServicesWereReset is a recoverable error
+        if (error as NSError).code != AVError.Code.mediaServicesWereReset.rawValue {
+            delegate?.tracker(self, didFailWithError: error)
+        }
     }
     
     @objc
     internal func sessionWasInterrupted(notification: NSNotification) {
-        print(notification)
         delegate?.trackerWasInterrupted(self)
     }
     

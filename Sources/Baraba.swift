@@ -56,35 +56,7 @@ public class Baraba: NSObject {
     public weak var delegate: BarabaDelegate?
     
     /**
-     A Boolean value that indicates whether this Baraba object is active and tracking user's face.
-     
-     This is a read-only property. If you want to make Baraba active, call `resume()` on the receiver.
-    */
-    public private(set) var isActive: Bool = false
-    
-    /**
-     A Boolean value that indicates whether the scroll view is being auto-scrolled. Read-only.
-    */
-    public var isScrolling: Bool {
-        displayLink?.isPaused == false
-    }
-    
-    /**
-     The speed in which to auto-scroll the scroll view. Represented in points per second. Default value is `200.0`.
-     
-     The minimum scroll speed is 60 points per second. Negative value is not supported.
-    */
-    public var speed: Double {
-        set {
-            _speed = newValue
-        }
-        get {
-            _speed
-        }
-    }
-    
-    /**
-     The duration of pause in seconds, after user finishes dragging the scroll view. Default value is `2.0`.
+     The duration of pause after user finishes dragging the scroll view. Default value is `2.0` seconds.
      
      After this amount of duration, auto-scrolling resumes.
     */
@@ -99,18 +71,57 @@ public class Baraba: NSObject {
     }
     
     /**
+     The speed in which to auto-scroll the scroll view, represented in points per second. Default value is `200.0`.
+     
+     The minimum scroll speed is 60 points per second. Negative value is not supported.
+    */
+    public var speed: Double {
+        set {
+            _speed = newValue
+        }
+        get {
+            _speed
+        }
+    }
+    
+    /**
+     A Boolean value that indicates whether this Baraba object is active and tracking user's face.
+     
+     This is a read-only property. If you want to make Baraba active, call `resume()` on the receiver.
+    */
+    public private(set) var isActive: Bool = false
+    
+    /**
+     A Boolean value that indicates whether the scroll view is being auto-scrolled. Read-only.
+    */
+    public var isScrolling: Bool {
+        displayLink?.isPaused == false
+    }
+    
+    /**
      Starts the tracking of user's face for auto-scrolling.
      
      If the object fails to resume, `func baraba(_ baraba: Baraba, didFailWithError error: Error)` will be called on the delegate.
     */
     public func resume() {
-        if scrollView == nil {
-            print("Baraba(\(self)) failed to resume. Its scrollView property is nil. Please designate a scrollView before calling resume()")
+        if isActive {
+            print("Baraba is already running.")
             return
         }
         
-        if isActive {
-            print("Baraba is already running.")
+        if scrollView == nil {
+            print("Baraba(\(self)) failed to resume. Its scrollView property is nil. Please designate a scrollView before calling resume()")
+            delegate?.baraba(self, didFailWithError: BarabaError.scrollViewNotProvided)
+            return
+        }
+        
+        if type(of: tracker).isSupported == false {
+            delegate?.baraba(self, didFailWithError: BarabaError.unsupportedConfiguration)
+            return
+        }
+        
+        if isCameraAccessDenied() {
+            delegate?.baraba(self, didFailWithError: BarabaError.cameraUnauthorized)
             return
         }
         
@@ -217,7 +228,6 @@ public class Baraba: NSObject {
     }
     
     private func evaluate() {
-        print("evaluate in \(Thread.isMainThread ? "main" : "bg")")
         guard let displayLink = displayLink, isActive else {
             return
         }
@@ -280,6 +290,12 @@ extension Baraba: FaceTrackerDelegate {
     internal func trackerInterruptionEnded(_ tracker: FaceTracker) {
         print("------- interruption ended")
         isSuspended = false
+    }
+    
+    internal func tracker(_ tracker: FaceTracker, didFailWithError error: Error) {
+        print("------- \(error)")
+        pause()
+        delegate?.baraba(self, didFailWithError: BarabaError.cameraFailed(error))
     }
 }
 

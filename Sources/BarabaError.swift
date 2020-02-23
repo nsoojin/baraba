@@ -1,5 +1,5 @@
 //
-// AV+Extensions.swift
+// BarabaError.swift
 //
 // Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
 //
@@ -22,18 +22,39 @@
 // SOFTWARE.
 //
 
-import AVFoundation
+import Foundation
+import ARKit
 
-internal extension AVCaptureDevice {
-    static var frontCamera: AVCaptureDevice? {
-        AVCaptureDevice.default(.builtInWideAngleCamera, for: .metadataObject, position: .front)
-    }
+public enum BarabaError: Error {
     
-    static var isAuthorizedForVideo: Bool {
-        authorizationStatus(for: .video) == .authorized
-    }
-}
-
-internal func isCameraAccessDenied() -> Bool {
-    AVCaptureDevice.authorizationStatus(for: .video) == .denied
+    /**
+     An error code that indicates the app doesn't have user permission to use the camera.
+     
+     When this error occurs, you may prompt the user to give your app permission to use the camera in Settings.
+     */
+    case cameraUnauthorized
+    
+    /**
+     An error code that indicates the configuration you chose to create Baraba object is not supported on the device.
+     
+     Call `Baraba.isConfigurationSupported(_:)` to ensure it's supported before attempting to create and run it on the Baraba object with `resume()`.
+     */
+    case unsupportedConfiguration
+    
+    /**
+     An error code that indicates the camera sensor has failed.
+     
+     Underlying error object is provided by either AVFoundation or ARKit.
+    */
+    case cameraFailed(Error)
+    
+    /**
+     An error code that indicates the scroll view property of Baraba object is nil.
+    */
+    case scrollViewNotProvided
+    
+    /**
+     An error code that indicates an unknown error has occured.
+    */
+    case unknown
 }
