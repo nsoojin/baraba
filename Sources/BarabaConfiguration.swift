@@ -54,10 +54,10 @@ extension BarabaConfiguration {
     /**
      A configuration that uses ARKit Face Tracking to detect faces.
 
-     ARKit Face Tracking is available only on iOS devices with a front-facing TrueDepth camera. Use the `BarabaConfiguration.ar.isSupported` property to determine whether this configuration is available on the current device.
+     ARKit Face Tracking is available only on iOS devices with a front-facing TrueDepth camera. Call `Baraba.isConfigurationSupported(_:)` to determine whether this configuration is available on the current device.
      
      - important:
-        If you use this configuration, your app must include a privacy policy describing to users how you intend to use face tracking and face data. See [link](https://github.com/nsoojin/baraba) for more details.
+        If you use this configuration, your app must include a privacy policy describing to users how you intend to use face tracking and face data. See [link](https://github.com/nsoojin/baraba#%EF%B8%8F-important) for more details.
     */
     public static let ar: BarabaConfiguration = BarabaConfiguration(tracker: ARFaceTracker())
     

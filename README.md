@@ -23,6 +23,7 @@ Make your UIScrollView scroll automatically when user is looking at the screen �
 - [x] Pauses scrolling when user turns away📱🙄 or when starts scrolling 👆
 - [x] Face Tracking using ARKit or AVFoundation (Your choice!)
 - [x] Adjust scrolling speed appropriate for your content
+- [x] Complete [Documentation](https://soojin.ro/baraba/)
 - [x] Supports iOS 11 or above
 
 ## Installation
@@ -112,7 +113,7 @@ If you want to use `BarabaConfiguration.ar`  which uses ARFaceTrackingConfigurat
 
 [Example #1](https://soojin.ro/notableme-privacypolicy) (This has passed the actual App Store Review.)
 
-You can use this [sample](https://github.com/nsoojin/baraba/blob/master/docs/PRIVACY-POLICY-SAMPLE.md) at your own discretion.
+You can use this [sample](https://github.com/nsoojin/baraba/blob/master/etc/PRIVACY-POLICY-SAMPLE.md) at your own discretion.
 
 ## FAQ
 

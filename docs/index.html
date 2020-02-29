@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Baraba  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Baraba  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Baraba Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Baraba Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Baraba  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Baraba.html">Baraba</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/BarabaError.html">BarabaError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/BarabaDelegate.html">BarabaDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/BarabaConfiguration.html">BarabaConfiguration</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='baraba' class='heading'>Baraba</h1>
+
+<p>
+   <a href="https://developer.apple.com/swift/">
+      <img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift 5.0">
+   </a>
+   <a href="http://cocoapods.org/pods/Baraba">
+      <img src="https://img.shields.io/cocoapods/v/Baraba.svg?style=flat" alt="Version">
+   </a>
+   <a href="http://cocoapods.org/pods/Baraba">
+      <img src="https://img.shields.io/cocoapods/p/Baraba.svg?style=flat" alt="Platform">
+   </a>
+   <a href="https://github.com/Carthage/Carthage">
+      <img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible">
+   </a>
+</p>
+
+<p>Make your UIScrollView scroll automatically when user is looking at the screen 👀</p>
+<h2 id='features' class='heading'>Features</h2>
+
+<ul>
+<li>[x] Automatic scrolling for your UIScrollView when user is looking at the screen📱👀</li>
+<li>[x] Pauses scrolling when user turns away📱🙄 or when starts scrolling 👆</li>
+<li>[x] Face Tracking using ARKit or AVFoundation (Your choice!)</li>
+<li>[x] Adjust scrolling speed appropriate for your content</li>
+<li>[x] Complete <a href="">Documentation</a></li>
+<li>[x] Supports iOS 11 or above</li>
+</ul>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>Baraba is available through <a href="http://cocoapods.org">CocoaPods</a>. To install it, simply add the following line to your Podfile:</p>
+<pre class="highlight shell"><code>pod <span class="s1">'Baraba'</span>
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. To integrate Baraba into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "nsoojin/baraba"
+</code></pre>
+
+<p>Run <code>carthage update</code> to build the framework and drag the built <code>Baraba.framework</code> into your Xcode project. </p>
+<h2 id='example' class='heading'>Example</h2>
+
+<p>The example application is the best way to see <code><a href="Classes/Baraba.html">Baraba</a></code> in action. Simply open the <code>Baraba.xcodeproj</code> and run the <code>Example</code> scheme.</p>
+<h2 id='basic-usage' class='heading'>Basic Usage</h2>
+<pre class="highlight plaintext"><code>// Probably in your view controller.
+let baraba = Baraba(configuration: .automatic)
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    baraba.scrollView = tableView // Set the scroll view for the auto-scroll target
+    baraba.delegate = self
+}
+
+override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    baraba.resume() // Resuming will activate camera and start tracking user's face
+}
+
+override func viewWillDisppear(_ animated: Bool) {
+    super.viewWillDisppear(animated)
+
+    baraba.pause() // Pause to stop accessing camera
+}
+</code></pre>
+<h2 id='configuration' class='heading'>Configuration</h2>
+<pre class="highlight plaintext"><code>let baraba = Baraba(configuration: .automatic) // Uses ARKit if supported. If not, uses AVFoundation
+let baraba = Baraba(configuration: .ar)
+let baraba = Baraba(configuration: .av)
+
+Baraba.isConfigurationSupported(.ar) // Check the device availability
+</code></pre>
+<h3 id='what-39-s-the-difference' class='heading'>What&rsquo;s the difference?</h3>
+
+<p>ARKit uses TrueDepth front camera. Not all iOS devices supports this, so refer to <a href="https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Cameras/Cameras.html#//apple_ref/doc/uid/TP40013599-CH107-SW1">device compatibility</a>. Generally, ARKit has faster face tracking capability so reacts faster to user movement. However, it consumes more energy and may increase the device temperature when used for a long time. The best way to see the difference is to run it for youself.  Try the Example app.</p>
+<h3 id='scroll-speed' class='heading'>Scroll Speed</h3>
+
+<p>You can adjust scroll speed with <code>preferredScrollSpeed</code> property, which represents speed in &lsquo;points per second&rsquo;. However, the actual scroll speed will be the nearest multiple of 60. The reason is for smooth scrolling, as the device&rsquo;s maximum refresh rate of the display is 60 frames per second. You can check the actual speed with <code>actualScrollSpeed</code> property if you want. Default is 180.</p>
+<pre class="highlight plaintext"><code>baraba.preferredScrollSpeed = 240 // baraba.actualScrollSpeed == 240 
+baraba.preferredScrollSpeed = 100 // baraba.actualScrollSpeed == 120
+</code></pre>
+<h3 id='pause-duration' class='heading'>Pause Duration</h3>
+
+<p>When user starts dragging the scroll view, auto-scrolling pauses. After the dragging finishes, auto-scrolling resumes after this duration.</p>
+<pre class="highlight plaintext"><code>baraba.pauseDuration = 4
+</code></pre>
+<h2 id='️-important' class='heading'>⚠️ Important</h2>
+
+<p>If you want to use <code><a href="Structs/BarabaConfiguration.html#/s:6Baraba0A13ConfigurationV2arACvpZ">BarabaConfiguration.ar</a></code>  which uses ARFaceTrackingConfiguration, your app must include a privacy policy describing to users how you intend to use face tracking and face data. (See <a href="https://developer.apple.com/documentation/arkit/arfacetrackingconfiguration">Apple&rsquo;s Note</a>) </p>
+
+<p><a href="https://soojin.ro/notableme-privacypolicy">Example #1</a> (This has passed the actual App Store Review.)</p>
+
+<p>You can use this <a href="https://github.com/nsoojin/baraba/blob/master/etc/PRIVACY-POLICY-SAMPLE.md">sample</a> at your own discretion.</p>
+<h2 id='faq' class='heading'>FAQ</h2>
+<h3 id='what-39-s-the-origin-of-the-name-baraba' class='heading'>What&rsquo;s the origin of the name Baraba?</h3>
+
+<p>Baraba(바라봐) is a Korean term which means &ldquo;Look at me&rdquo;.</p>
+<h2 id='contributing' class='heading'>Contributing</h2>
+
+<p>Contributions are very welcome 🙌</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>Baraba is released under the MIT license. See <a href="https://github.com/nsoojin/baraba/blob/master/LICENSE">LICENCE</a> for details.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright 2020 nsoojin</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -141,7 +141,7 @@
 				3D9C42A32274595F000A6585 /* Tests */,
 				3D9C43222274629B000A6585 /* Example */,
 				3D9C429B227458E8000A6585 /* Configs */,
-				F575ACD3240A4B8C004130D4 /* docs */,
+				F575ACD3240A4B8C004130D4 /* etc */,
 				3D9C429122745894000A6585 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -250,12 +250,12 @@
 			path = FaceTracker;
 			sourceTree = "<group>";
 		};
-		F575ACD3240A4B8C004130D4 /* docs */ = {
+		F575ACD3240A4B8C004130D4 /* etc */ = {
 			isa = PBXGroup;
 			children = (
 				F575ACD4240A4BC3004130D4 /* PRIVACY-POLICY-SAMPLE.md */,
 			);
-			path = docs;
+			path = etc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
