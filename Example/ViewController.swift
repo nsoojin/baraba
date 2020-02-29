@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         tableView?.dataSource = self
         barabaButton?.title = "Pause"
         
-        baraba = Baraba(configuration: .av)
+        baraba = Baraba(configuration: .automatic)
         baraba?.scrollView = tableView
         baraba?.delegate = self
         baraba?.resume()

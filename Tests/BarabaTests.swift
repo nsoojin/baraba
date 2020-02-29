@@ -111,7 +111,7 @@ class BarabaTests: XCTestCase {
         let baraba = Baraba(configuration: config)
         baraba.scrollView = scrollView
         baraba.delegate = delegate
-        baraba.speed = 600
+        baraba.preferredScrollSpeed = 600
         
         let testExpectation = expectation(description: "Baraba expectation")
         
@@ -166,7 +166,7 @@ class BarabaTests: XCTestCase {
         let config = BarabaConfiguration(tracker: mockTracker)
         let baraba = Baraba(configuration: config)
         baraba.scrollView = scrollView
-        baraba.speed = 240
+        baraba.preferredScrollSpeed = 240
         baraba.delegate = delegate
         
         let testExpectation = expectation(description: "Baraba expectation")
@@ -312,6 +312,19 @@ class BarabaTests: XCTestCase {
         waitForExpectations(timeout: 1)
         XCTAssert(baraba.isActive == false)
         XCTAssert(baraba.isScrolling == false)
+    }
+    
+    func testPreferredScrollSpeed() {
+        let baraba = Baraba(configuration: .mock)
+        
+        baraba.preferredScrollSpeed = 100
+        XCTAssert(baraba.actualScrollSpeed == 120)
+        
+        baraba.preferredScrollSpeed = 150
+        XCTAssert(baraba.actualScrollSpeed == 180)
+        
+        baraba.preferredScrollSpeed = -10
+        XCTAssert(baraba.actualScrollSpeed == 60)
     }
 }
 

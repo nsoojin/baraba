@@ -71,17 +71,27 @@ public class Baraba: NSObject {
     }
     
     /**
-     The speed in which to auto-scroll the scroll view, represented in points per second. Default value is `180`.
+     The preferred speed for auto-scrolling the scroll view, represented in points per second.
      
-     The minimum scroll speed is 60 points per second. The value should be a multiple of `60`. If set otherwise, it is rounded to the nearest multiple of 60. Negative value is not supported.
+     The actual speed chosen is the nearest multiple of `60`. For example, if you set this value to `140`, the actual speed will be `120` as it is closer to `120` than `180`. Check the `actualScrollSpeed` property.
+     
+     Default value is `180`. The minimum is `60`.
     */
-    public var speed: Int {
-        set {
-            _speed = newValue
+    public var preferredScrollSpeed: Int = 180 {
+        didSet {
+            _speed = preferredScrollSpeed
         }
-        get {
-            _speed
-        }
+    }
+    
+    /**
+     The actual scroll speed, represented in points per second.
+     
+     If you want to change the scroll speed, set the value to `preferredScrollSpeed`. It will be rounded to the nearest multiple of 60, which is the actual scroll speed.
+     
+     Default value is `180`.
+    */
+    public var actualScrollSpeed: Int {
+        _speed
     }
     
     /**
@@ -182,7 +192,7 @@ public class Baraba: NSObject {
         }
         
         let actualFramesPerSecond = 1 / (displayLink.targetTimestamp - displayLink.timestamp)
-        let scrollOffset = round(max((Double(speed) / actualFramesPerSecond), 1))
+        let scrollOffset = round(max((Double(_speed) / actualFramesPerSecond), 1))
         let target = CGPoint(x: 0, y: scrollView.contentOffset.y + CGFloat(scrollOffset))
         
         if target.y + scrollView.bounds.height <= scrollView.contentSize.height + scrollView.adjustedContentInset.bottom {
