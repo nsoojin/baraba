@@ -1,8 +1,6 @@
-<p align="center">
-   <img width="200" src="https://raw.githubusercontent.com/SvenTiigi/SwiftKit/gh-pages/readMeAssets/SwiftKitLogo.png" alt="Baraba Logo">
-</p>
+# Baraba
 
-<p align="center">
+<p>
    <a href="https://developer.apple.com/swift/">
       <img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift 5.0">
    </a>
@@ -22,10 +20,9 @@ Make your UIScrollView scroll automatically when user is looking at the screen �
 ## Features
 
 - [x] Automatic scrolling for your UIScrollView when user is looking at the screen📱👀
-- [x] Pauses scrolling when user looks away 👀📱or when starts scrolling 👆
-- [x] Face Tracking using ARKit or AVFoundation (Your choice !)
+- [x] Pauses scrolling when user turns away📱🙄 or when starts scrolling 👆
+- [x] Face Tracking using ARKit or AVFoundation (Your choice!)
 - [x] Adjust scrolling speed appropriate for your content
-- [x] Reacts accordingly to user interaction  
 - [x] Supports iOS 11 or above
 
 ## Installation
@@ -90,7 +87,7 @@ Baraba.isConfigurationSupported(.ar) // Check the device availability
 
 ### What's the difference?
 
-ARKit uses TrueDepth front camera. Not all iOS devices supports this, so refer to [device compatibility](https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Cameras/Cameras.html#//apple_ref/doc/uid/TP40013599-CH107-SW1). Generally, ARKit has faster face tracking capability so reacts more fast to user movement; however, it consumes more energy and may increase the device temperature when used for a long time. The best way to see the difference is to run it for youself.  Try the Example app.
+ARKit uses TrueDepth front camera. Not all iOS devices supports this, so refer to [device compatibility](https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Cameras/Cameras.html#//apple_ref/doc/uid/TP40013599-CH107-SW1). Generally, ARKit has faster face tracking capability so reacts faster to user movement. However, it consumes more energy and may increase the device temperature when used for a long time. The best way to see the difference is to run it for youself.  Try the Example app.
 
 ### Scroll Speed
 
@@ -114,7 +111,14 @@ baraba.pauseDuration = 4
 If you want to use `BarabaConfiguration.ar`  which uses ARFaceTrackingConfiguration, your app must include a privacy policy describing to users how you intend to use face tracking and face data. (See [Apple's Note](https://developer.apple.com/documentation/arkit/arfacetrackingconfiguration)) 
 
 [Example #1](https://soojin.ro/notableme-privacypolicy) (This has passed the actual App Store Review.)
+
 You can use this [sample](https://github.com/nsoojin/baraba/blob/master/docs/PRIVACY-POLICY-SAMPLE.md) at your own discretion.
+
+## FAQ
+
+### What's the origin of the name Baraba?
+
+Baraba(바라봐) is a Korean term which means "Look at me".
 
 ## Contributing
 Contributions are very welcome 🙌
