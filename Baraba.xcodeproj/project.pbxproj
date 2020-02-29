@@ -101,6 +101,7 @@
 		F569D96B2402484E00775314 /* MockFaceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFaceTracker.swift; sourceTree = "<group>"; };
 		F569D96D240249B700775314 /* MockBaragaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBaragaDelegate.swift; sourceTree = "<group>"; };
 		F569D96F24024ACD00775314 /* MockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConfiguration.swift; sourceTree = "<group>"; };
+		F575ACD4240A4BC3004130D4 /* PRIVACY-POLICY-SAMPLE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "PRIVACY-POLICY-SAMPLE.md"; sourceTree = "<group>"; };
 		F593547424009E43001EB712 /* PropertyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappers.swift; sourceTree = "<group>"; };
 		F5D882BE23F8DA19007790A3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5D882C023F8E29B007790A3 /* BarabaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarabaDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 				3D9C42A32274595F000A6585 /* Tests */,
 				3D9C43222274629B000A6585 /* Example */,
 				3D9C429B227458E8000A6585 /* Configs */,
+				F575ACD3240A4B8C004130D4 /* docs */,
 				3D9C429122745894000A6585 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -246,6 +248,14 @@
 				F561739423F76691007CE901 /* AVFaceTracker.swift */,
 			);
 			path = FaceTracker;
+			sourceTree = "<group>";
+		};
+		F575ACD3240A4B8C004130D4 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				F575ACD4240A4BC3004130D4 /* PRIVACY-POLICY-SAMPLE.md */,
+			);
+			path = docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

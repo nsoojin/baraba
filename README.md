@@ -15,31 +15,24 @@
    <a href="https://github.com/Carthage/Carthage">
       <img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible">
    </a>
-   <a href="https://github.com/apple/swift-package-manager">
-      <img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="SPM">
-   </a>
 </p>
 
-# Baraba
-
-<p align="center">
-ℹ️ Short description of Baraba
-</p>
+Make your UIScrollView scroll automatically when user is looking at the screen 👀
 
 ## Features
 
-- [x] ℹ️ Add Baraba features
-
-## Example
-
-The example application is the best way to see `Baraba` in action. Simply open the `Baraba.xcodeproj` and run the `Example` scheme.
+- [x] Automatic scrolling for your UIScrollView when user is looking at the screen📱👀
+- [x] Pauses scrolling when user looks away 👀📱or when starts scrolling 👆
+- [x] Face Tracking using ARKit or AVFoundation (Your choice !)
+- [x] Adjust scrolling speed appropriate for your content
+- [x] Reacts accordingly to user interaction  
+- [x] Supports iOS 11 or above
 
 ## Installation
 
 ### CocoaPods
 
-Baraba is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Baraba is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```bash
 pod 'Baraba'
@@ -47,44 +40,85 @@ pod 'Baraba'
 
 ### Carthage
 
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
-
-To integrate Baraba into your Xcode project using Carthage, specify it in your `Cartfile`:
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. To integrate Baraba into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "nsoojin/Baraba"
+github "nsoojin/baraba"
 ```
 
 Run `carthage update` to build the framework and drag the built `Baraba.framework` into your Xcode project. 
 
-## Usage
+## Example
 
-ℹ️ Describe the usage of your Kit
+The example application is the best way to see `Baraba` in action. Simply open the `Baraba.xcodeproj` and run the `Example` scheme.
+
+## Basic Usage
+
+```Swift
+// Probably in your view controller.
+let baraba = Baraba(configuration: .automatic)
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    baraba.scrollView = tableView // Set the scroll view for the auto-scroll target
+    baraba.delegate = self
+}
+
+override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    baraba.resume() // Resuming will activate camera and start tracking user's face
+}
+
+override func viewWillDisppear(_ animated: Bool) {
+    super.viewWillDisppear(animated)
+    
+    baraba.pause() // Pause to stop accessing camera
+}
+```
+
+## Configuration
+
+```Swift 
+let baraba = Baraba(configuration: .automatic) // Uses ARKit if supported. If not, uses AVFoundation
+let baraba = Baraba(configuration: .ar)
+let baraba = Baraba(configuration: .av)
+
+Baraba.isConfigurationSupported(.ar) // Check the device availability
+```
+
+### What's the difference?
+
+ARKit uses TrueDepth front camera. Not all iOS devices supports this, so refer to [device compatibility](https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Cameras/Cameras.html#//apple_ref/doc/uid/TP40013599-CH107-SW1). Generally, ARKit has faster face tracking capability so reacts more fast to user movement; however, it consumes more energy and may increase the device temperature when used for a long time. The best way to see the difference is to run it for youself.  Try the Example app.
+
+### Scroll Speed
+
+You can adjust scroll speed with `preferredScrollSpeed` property, which represents speed in 'points per second'. However, the actual scroll speed will be the nearest multiple of 60. The reason is for smooth scrolling, as the device's maximum refresh rate of the display is 60 frames per second. You can check the actual speed with `actualScrollSpeed` property if you want. Default is 180.
+
+```Swift
+baraba.preferredScrollSpeed = 240 // baraba.actualScrollSpeed == 240 
+baraba.preferredScrollSpeed = 100 // baraba.actualScrollSpeed == 120
+```
+
+### Pause Duration
+
+When user starts dragging the scroll view, auto-scrolling pauses. After the dragging finishes, auto-scrolling resumes after this duration.
+
+```Swift
+baraba.pauseDuration = 4
+```
+
+## ⚠️ Important
+
+If you want to use `BarabaConfiguration.ar`  which uses ARFaceTrackingConfiguration, your app must include a privacy policy describing to users how you intend to use face tracking and face data. (See [Apple's Note](https://developer.apple.com/documentation/arkit/arfacetrackingconfiguration)) 
+
+[Example #1](https://soojin.ro/notableme-privacypolicy) (This has passed the actual App Store Review.)
+You can use this [sample](https://github.com/nsoojin/baraba/blob/master/docs/PRIVACY-POLICY-SAMPLE.md) at your own discretion.
 
 ## Contributing
 Contributions are very welcome 🙌
 
 ## License
 
-```
-Baraba
-Copyright (c) 2020 Soojin Ro (https://github.com/nsoojin)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-```
+Baraba is released under the MIT license. See [LICENCE](https://github.com/nsoojin/baraba/blob/master/LICENSE) for details.
