@@ -28,6 +28,7 @@ class BarabaTests: XCTestCase {
         
         let error = delegate.error
         
+        XCTAssert(Baraba.isConfigurationSupported(.unsupported) == false)
         XCTAssert(baraba.isActive == false)
         XCTAssert(error != nil)
         
@@ -165,34 +166,32 @@ class BarabaTests: XCTestCase {
         let config = BarabaConfiguration(tracker: mockTracker)
         let baraba = Baraba(configuration: config)
         baraba.scrollView = scrollView
-        baraba.speed = 200
+        baraba.speed = 240
         baraba.delegate = delegate
         
         let testExpectation = expectation(description: "Baraba expectation")
         
         mockTracker.action = { delegate in
             delegate.trackerDidStartTrackingFace(mockTracker)
-            usleep(2_500_000)
+            usleep(1_500_000)
             
-//            delegate.trackerWasInterrupted(mockTracker)
-//            usleep(0_500_000)
-//            delegate.trackerInterruptionEnded(mockTracker)
-//            usleep(2_000_000)
+            delegate.trackerWasInterrupted(mockTracker)
+            usleep(0_500_000)
+            delegate.trackerInterruptionEnded(mockTracker)
+            usleep(1_000_000)
             
             delegate.trackerDidEndTrackingFace(mockTracker)
-//            usleep(0_500_000)
+            usleep(0_500_000)
             
             testExpectation.fulfill()
         }
         
-        print("1111111 \(scrollView.contentOffset)")
         baraba.resume()
         
         waitForExpectations(timeout: 5)
         XCTAssert(baraba.isActive)
-        print("22222 \(scrollView.contentOffset)")
-        XCTAssert(scrollView.contentOffset.y > 390, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
-        XCTAssert(scrollView.contentOffset.y < 410, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
+        XCTAssert(scrollView.contentOffset.y > 600*0.9, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
+        XCTAssert(scrollView.contentOffset.y < 600*1.1, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
         XCTAssert(delegate.numberOfScrollStarts == 2, "numberOfScrollStarts should be 2, instead of \(delegate.numberOfScrollStarts)")
         XCTAssert(delegate.numberOfScrollStops == 2, "numberOfScrollStops should be 2, instead of \(delegate.numberOfScrollStarts)")
     }
@@ -211,10 +210,10 @@ class BarabaTests: XCTestCase {
             usleep(2_000_000)
             
             delegate.trackerDidEndTrackingFace(mockTracker)
-//            delegate.trackerWasInterrupted(mockTracker)
-//            usleep(0_050_000)
-//
-//            delegate.trackerInterruptionEnded(mockTracker)
+            delegate.trackerWasInterrupted(mockTracker)
+            usleep(0_050_000)
+
+            delegate.trackerInterruptionEnded(mockTracker)
             usleep(0_050_000)
             
             testExpectation.fulfill()
@@ -224,8 +223,8 @@ class BarabaTests: XCTestCase {
         
         waitForExpectations(timeout: 3)
         XCTAssert(baraba.isActive)
-        XCTAssert(scrollView.contentOffset.y > 390, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
-        XCTAssert(scrollView.contentOffset.y < 410, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
+        XCTAssert(scrollView.contentOffset.y > 360*0.9, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
+        XCTAssert(scrollView.contentOffset.y < 360*1.1, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
         XCTAssert(delegate.numberOfScrollStarts == 1, "numberOfScrollStarts should be 1, instead of \(delegate.numberOfScrollStarts)")
         XCTAssert(delegate.numberOfScrollStops == 1, "numberOfScrollStops should be 1, instead of \(delegate.numberOfScrollStarts)")
     }
@@ -289,7 +288,31 @@ class BarabaTests: XCTestCase {
         XCTAssert(delegate.error == nil)
     }
     
-    
+    func testRemoveScrollView() {
+        let mockTracker = MockFaceTracker()
+        let config = BarabaConfiguration(tracker: mockTracker)
+        let baraba = Baraba(configuration: config)
+        baraba.scrollView = scrollView
+        baraba.delegate = delegate
+        
+        let testExpectation = expectation(description: "Baraba expectation")
+        
+        mockTracker.action = { delegate in
+            delegate.trackerDidStartTrackingFace(mockTracker)
+            usleep(0_500_000)
+            
+            baraba.scrollView = nil
+            usleep(0_100_000)
+            
+            testExpectation.fulfill()
+        }
+        
+        baraba.resume()
+        
+        waitForExpectations(timeout: 1)
+        XCTAssert(baraba.isActive == false)
+        XCTAssert(baraba.isScrolling == false)
+    }
 }
 
 struct MockError: Error {}

@@ -171,17 +171,22 @@ public class Baraba: NSObject {
 
     @objc
     internal func scroll(displayLink: CADisplayLink) {
-        guard let scrollView = scrollView, shouldScroll else {
+        guard let scrollView = scrollView else {
+            Log.error("Pausing because scrollView is nil. Please designate a scrollView before calling resume()")
+            pause()
+            return
+        }
+        
+        guard shouldScroll == true else {
             return
         }
         
         let actualFramesPerSecond = 1 / (displayLink.targetTimestamp - displayLink.timestamp)
         let scrollOffset = round(max((Double(speed) / actualFramesPerSecond), 1))
-        print(scrollOffset)
         let target = CGPoint(x: 0, y: scrollView.contentOffset.y + CGFloat(scrollOffset))
+        
         if target.y + scrollView.bounds.height <= scrollView.contentSize.height + scrollView.adjustedContentInset.bottom {
             scrollView.contentOffset = target
-            print("-- \(scrollView.contentOffset.y)")
         }
     }
     
