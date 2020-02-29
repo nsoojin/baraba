@@ -54,14 +54,21 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: BarabaDelegate {
     func barabaDidStartScrolling(_ baraba: Baraba) {
-//        print("did start scrolling")
+        // do something
     }
     
     func barabaDidStopScrolling(_ baraba: Baraba) {
-//        print("did stop scrolling")
+        // do something
     }
     
     func baraba(_ baraba: Baraba, didFailWithError error: Error) {
-        print("did fail with error \(error)")
+        switch error {
+        case BarabaError.cameraUnauthorized:
+            ()
+        case BarabaError.unsupportedConfiguration:
+            ()
+        default:
+            ()
+        }
     }
 }

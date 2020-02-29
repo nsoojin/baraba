@@ -71,11 +71,11 @@ public class Baraba: NSObject {
     }
     
     /**
-     The speed in which to auto-scroll the scroll view, represented in points per second. Default value is `200.0`.
+     The speed in which to auto-scroll the scroll view, represented in points per second. Default value is `180`.
      
-     The minimum scroll speed is 60 points per second. Negative value is not supported.
+     The minimum scroll speed is 60 points per second. The value should be a multiple of `60`. If set otherwise, it is rounded to the nearest multiple of 60. Negative value is not supported.
     */
-    public var speed: Double {
+    public var speed: Int {
         set {
             _speed = newValue
         }
@@ -115,13 +115,13 @@ public class Baraba: NSObject {
         }
         
         if type(of: tracker).isSupported == false {
-            Log.default("Failed to resume. Implement BarabaDelegate's 'func baraba(_:, didFailWithError:)' to find out the reason.")
+            Log.default("Failed to resume (BarabaError.unsupportedConfiguration). Implement BarabaDelegate's 'func baraba(_:, didFailWithError:)' to add fallback.")
             delegate?.baraba(self, didFailWithError: BarabaError.unsupportedConfiguration)
             return
         }
         
         if type(of: tracker).isHardwareDenied {
-            Log.default("Failed to resume. Implement BarabaDelegate's 'func baraba(_:, didFailWithError:)' to find out the reason.")
+            Log.default("Failed to resume (BarabaError.cameraUnauthorized). Implement BarabaDelegate's 'func baraba(_:, didFailWithError:)' to add fallback.")
             delegate?.baraba(self, didFailWithError: BarabaError.cameraUnauthorized)
             return
         }
@@ -169,8 +169,6 @@ public class Baraba: NSObject {
         tracker.delegate = self
     }
 
-    var numberOfScrolls = 0
-    
     @objc
     internal func scroll(displayLink: CADisplayLink) {
         guard let scrollView = scrollView, shouldScroll else {
@@ -178,13 +176,12 @@ public class Baraba: NSObject {
         }
         
         let actualFramesPerSecond = 1 / (displayLink.targetTimestamp - displayLink.timestamp)
-        let scrollOffset = round(max((speed / actualFramesPerSecond), 1))
+        let scrollOffset = round(max((Double(speed) / actualFramesPerSecond), 1))
         print(scrollOffset)
         let target = CGPoint(x: 0, y: scrollView.contentOffset.y + CGFloat(scrollOffset))
         if target.y + scrollView.bounds.height <= scrollView.contentSize.height + scrollView.adjustedContentInset.bottom {
             scrollView.contentOffset = target
             print("-- \(scrollView.contentOffset.y)")
-            numberOfScrolls += 1
         }
     }
     
@@ -236,12 +233,10 @@ public class Baraba: NSObject {
         }
         
         if shouldScroll == true && displayLink.isPaused == true {
-//            print("3333")
             displayLink.isPaused = false
             Log.debug("Did start scrolling")
             DispatchQueue.main.async { self.delegate?.barabaDidStartScrolling(self) }
         } else if shouldScroll == false && displayLink.isPaused == false {
-//            print("4444")
             displayLink.isPaused = true
             Log.debug("Did stop scrolling")
             DispatchQueue.main.async { self.delegate?.barabaDidStopScrolling(self) }
@@ -264,8 +259,8 @@ public class Baraba: NSObject {
         }
     }
     
-    @Minimum(min: 60)
-    private var _speed: Double = 200.0
+    @Multiple(multiplier: 60)
+    private var _speed: Int = 180
     
     @Minimum(min: 0)
     private var _pauseDuration: Double = 2.0

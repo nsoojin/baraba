@@ -190,7 +190,6 @@ class BarabaTests: XCTestCase {
         
         waitForExpectations(timeout: 5)
         XCTAssert(baraba.isActive)
-        print("@@@@@@ \(baraba.numberOfScrolls)")
         print("22222 \(scrollView.contentOffset)")
         XCTAssert(scrollView.contentOffset.y > 390, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")
         XCTAssert(scrollView.contentOffset.y < 410, "Scroll view's contentOffset is \(scrollView.contentOffset.y)")

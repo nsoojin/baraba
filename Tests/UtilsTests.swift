@@ -46,26 +46,46 @@ class UtilsTests: XCTestCase {
     }
     
     func testMinimum() {
-        var mock = MockMinimum(50)
+        var mock = MockWrapper()
         
         mock.value = 20
-        XCTAssertTrue(mock.value == 30)
+        XCTAssert(mock.value == 30)
         
         mock.value = 70
-        XCTAssertTrue(mock.value == 70)
+        XCTAssert(mock.value == 70)
         
         mock.value = -20
-        XCTAssertTrue(mock.value == 30)
+        XCTAssert(mock.value == 30)
         
         mock.value = 29
-        XCTAssertTrue(mock.value == 30)
+        XCTAssert(mock.value == 30)
+    }
+    
+    func testMultiple() {
+        var mock = MockWrapper()
+        
+        XCTAssert(mock.multiple == 120)
+        
+        mock.multiple = 160
+        XCTAssert(mock.multiple == 180)
+        
+        mock.multiple = 59
+        XCTAssert(mock.multiple == 60)
+        
+        mock.multiple = 90
+        XCTAssert(mock.multiple == 120)
+        
+        mock.multiple = 200
+        XCTAssert(mock.multiple == 180)
+        
+        mock.multiple = 25
+        XCTAssert(mock.multiple == 60)
     }
 }
 
-private struct MockMinimum {
-    @Minimum(min: 30) var value: Int = 0
+private struct MockWrapper {
+    @Minimum(min: 30) var value: Int = 30
+    @Multiple(multiplier: 60) var multiple: Int = 120
     
-    init(_ initial: Int) {
-        value = initial
-    }
+    init() {}
 }

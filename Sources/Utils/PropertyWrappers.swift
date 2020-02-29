@@ -43,7 +43,34 @@ internal struct Minimum<T: Comparable> {
     }
     
     internal init(wrappedValue: T, min: T) {
-      value = wrappedValue
-      self.min = min
+        precondition(wrappedValue >= min)
+        self.min = min
+        self.value = wrappedValue
+    }
+}
+
+@propertyWrapper
+internal struct Multiple {
+    internal let multiplier: Int
+    internal var value: Int
+    
+    internal var wrappedValue: Int {
+        get {
+            value
+        }
+        set {
+            if newValue.isMultiple(of: multiplier) {
+                value = newValue
+            } else {
+                let quotient = max(Int(round(Double(newValue) / Double(multiplier))), 1)
+                value = multiplier * quotient
+            }
+        }
+    }
+    
+    internal init(wrappedValue: Int, multiplier: Int) {
+        precondition(wrappedValue.isMultiple(of: multiplier))
+        self.value = wrappedValue
+        self.multiplier = multiplier
     }
 }
