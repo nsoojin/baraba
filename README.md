@@ -52,21 +52,23 @@ The example application is the best way to see `Baraba` in action. Simply open t
 
 ## Basic Usage
 
+### Just three simple lines of code to get it running!
+
 ```Swift
 // Probably in your view controller.
-let baraba = Baraba(configuration: .automatic)
+let baraba = Baraba(configuration: .automatic) // (1) Initialize Baraba
 
 override func viewDidLoad() {
     super.viewDidLoad()
     
-    baraba.scrollView = tableView // Set the scroll view for the auto-scroll target
+    baraba.scrollView = tableView // (2) Set the scroll view for the auto-scroll target
     baraba.delegate = self
 }
 
 override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    baraba.resume() // Resuming will activate camera and start tracking user's face
+    baraba.resume() // (3) Resume to activate camera and start tracking user's face
 }
 
 override func viewWillDisppear(_ animated: Bool) {
