@@ -1,6 +1,9 @@
 # Baraba
 
 <p>
+   <a href="https://github.com/nsoojin/baraba/actions">
+      <img src="https://github.com/nsoojin/baraba/workflows/CI/badge.svg">
+   </a>
    <a href="https://developer.apple.com/swift/">
       <img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift 5.0">
    </a>
