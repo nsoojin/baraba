@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name                      = "Baraba"
   s.version                   = "1.0.0"
-  s.summary                   = "Baraba"
+  s.summary                   = "Make your UIScrollView scroll automatically when user is looking 👀"
   s.homepage                  = "https://github.com/nsoojin/baraba"
   s.license                   = { :type => "MIT", :file => "LICENSE" }
   s.author                    = { "Soojin Ro" => "sugarpoint33@gmail.com" }
