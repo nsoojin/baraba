@@ -33,7 +33,7 @@ Make your UIScrollView scroll automatically when user is looking at the screen ð
 
 ### Click below image ðŸ‘‰ YouTube
 
-[![Baraba Demo](https://img.youtube.com/vi/Hiojxdy_QtM/mqdefault.jpg)](https://www.youtube.com/watch?v=Hiojxdy_QtM)
+[![Baraba Demo](etc/baraba_demo.gif)](https://www.youtube.com/watch?v=Hiojxdy_QtM)
 
 ## Installation
 
