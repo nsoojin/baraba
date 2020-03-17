@@ -9,6 +9,8 @@ on:
     - /^feature.*$/
   pull_request_review:
     types: [submitted, edited, dismissed]
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   tests:
