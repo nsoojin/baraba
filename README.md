@@ -126,6 +126,8 @@ If you want to use `BarabaConfiguration.ar`  which uses ARFaceTrackingConfigurat
 
 You can use this [sample](https://github.com/nsoojin/baraba/blob/master/etc/PRIVACY-POLICY-SAMPLE.md) at your own discretion.
 
+Don't forget to add `Privacy - Camera Usage Description` in your app's `info.plist` file.
+
 ## FAQ
 
 ### What's the origin of the name Baraba?
