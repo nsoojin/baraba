@@ -7,9 +7,8 @@ on:
     - develop
     - /^hotfix.*$/
     - /^feature.*$/
-  pull_request:
-    branches:
-    - master
+  pull_request_review:
+    types: [submitted, edited, dismissed]
 
 jobs:
   tests:
