@@ -1,5 +1,7 @@
 # Baraba
-
+>from Korean: 
+>
+>*meaning, **Look at me***
 <p>
    <a href="https://github.com/nsoojin/baraba/actions">
       <img src="https://github.com/nsoojin/baraba/workflows/CI/badge.svg">
